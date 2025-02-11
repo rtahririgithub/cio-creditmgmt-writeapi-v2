@@ -1,0 +1,174 @@
+{
+    "$id": "ref-pds-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Ref PDS JSON Schema",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "ReferenceDataKey": {
+            "type": "object",
+            "description": "Reference data key object.",
+            "additionalProperties": false,
+            "properties": {
+                "keyName": {
+                    "type": "string",
+                    "description": "Input Key name for reference data item."
+                },
+                "keyValue": {
+                    "type": "string",
+                    "description": "Input key value for reference data item."
+                }
+            },
+            "required": [
+                "keyName",
+                "keyValue"
+            ]
+        },
+        "ReferenceDataValue": {
+            "type": "object",
+            "description": "Reference data value object.",
+            "additionalProperties": false,
+            "properties": {
+                "langCode": {
+                    "type": "string",
+                    "default": "en",
+                    "description": "Language code for reference data value."
+                },
+                "valueCode": {
+                    "type": "string",
+                    "description": "Purpose or value code for reference data item."
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Text value for reference data item."
+                }
+            },
+            "required": [
+                "valueCode",
+                "value"
+            ]
+        },
+        "ReferenceDataItem": {
+            "type": "object",
+            "description": "Reference data item.",
+            "additionalProperties": false,
+            "properties": {
+                "sequence": {
+                    "type": "integer",
+                    "description": "Sequence or priority number for reference data item."
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Key or Code for reference data item."
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ReferenceDataValue"
+                    },
+                    "description": "English language value for reference data item."
+                }
+            },
+            "required": [
+                "sequence",
+                "key",
+                "values"
+            ]
+        },
+        "MultiKeyReferenceDataItem": {
+            "type": "object",
+            "description": "Reference data item.",
+            "additionalProperties": false,
+            "properties": {
+                "sequence": {
+                    "type": "integer",
+                    "description": "Sequence or priority number for reference data item."
+                },
+                "keys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ReferenceDataKey"
+                    },
+                    "description": "English language value for reference data item."
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ReferenceDataValue"
+                    },
+                    "description": "English language value for reference data item."
+                }
+            },
+            "required": [
+                "sequence",
+                "keys",
+                "values"
+            ]
+        }
+    },
+    "properties": {
+        "addressType": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/ReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        },
+        "cdaBillingAccountType": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/ReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        },
+        "countryOverseas": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/ReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        },
+        "creditClass": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/ReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        },
+        "jurisdictionType": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/ReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        },
+        "provinceState": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/ReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        },
+        "creditDecisionRule": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/MultiKeyReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        },
+        "creditOperationParameter": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/MultiKeyReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        },
+        "assessmentMessage": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/MultiKeyReferenceDataItem"
+            },
+            "description": "Reference data items array."
+        }
+    }
+}

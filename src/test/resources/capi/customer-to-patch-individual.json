@@ -1,0 +1,34 @@
+{
+  "creditProfile": [
+    {
+      "creditScore": 600,
+      "telusCharacteristic": {
+        "bureauDecisionCode": "E29",
+        "creditClassCd": "C",
+        "creditProgramName": "DEP",
+        "averageSecurityDepositAmt": 100.2,
+        "clpCreditLimit": null,
+        "clpContractTerm": null,
+        "clpRatePlanAmt": null
+      },
+      "@baseType": "CreditProfile",
+      "@type": "TelusCreditProfile"
+    }
+  ],
+  "engagedParty": {
+    "contactMedium": [
+      {
+        "mediumType": "postalAddress",
+        "characteristic": {
+          "email": "Pavan.V@telus.com"
+        }
+      }
+    ],
+    "@referredType": "Individual"
+  },
+  "telusAuditCharacteristic": {
+    "originatorApplicationId": "APP_HWPURCHASEACCT",
+    "userId": "74382",
+    "tenpubsubsync": false
+  }
+}

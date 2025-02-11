@@ -1,0 +1,139 @@
+{
+  "id": "37ad1c92-7657-4ccd-ad88-a1996d80a4c1",
+  "creditRiskLevelNum": 11,
+  "primaryCreditScoreCd": 160,
+  "validFor": {
+    "endDateTime": "2022-01-09T16:51:22.620Z",
+    "startDateTime": "2021-01-09T16:51:22.620Z"
+  },
+  "telusCharacteristic": {
+    "assessmentMessage": "assessmentMessage",
+    "assessmentMessageCode": "assessmentMessageCode",
+    "averageSecurityDepositAmt": "0.5",
+    "bureauDecisionCode": "bureauDecisionCode",
+    "bureauDecisionMessage": "bureauDecisionMessage",
+    "clpCreditLimit": "0.6",
+    "creditAssessmentId": 0,
+    "creditClassCd": "creditClassCd",
+    "creditClassDate": "2021-01-02T16:51:22.620Z",
+    "creditDecisionCd": "creditDecisionCd",
+    "creditDecisionDate": "2021-01-09T16:51:22.620Z",
+    "creditProfileLegacyId": 123456,
+    "creditProgramName": "string",
+    "primaryCreditScoreCd": "primaryCreditScoreCd",
+    "primaryCreditScoreTypeCd": "primaryCreditScoreTypeCd",
+    "riskLevelDecisionCd": "riskLevelDecisionCd",
+    "riskLevelDt": "2021-01-01T16:51:22.620Z",
+    "riskLevelNumber": "riskLevelNumber",
+    "warningHistoryList": [
+      {
+        "id": "a34cb842-204e-466b-9326-e0e1df0334d1",
+        "approvalTs": "2021-01-09T16:51:22.620Z",
+        "approvalExternalId": 0,
+        "approvalCreditAssessmentId": 0,
+        "resolvedPermanentlyInd": "true",
+        "validFor": {
+          "endDateTime": "2022-01-01T16:51:22.620Z",
+          "startDateTime": "2021-01-01T16:51:22.620Z"
+        },
+        "warningCategoryCd": "warningCategoryCd",
+        "warningCd": "warningCd",
+        "warningDetectionTs": "2021-01-10T16:51:22.620Z",
+        "warningHistoryLegacyId": 666666,
+        "warningItemTypeCd": "warningItemTypeCd",
+        "warningStatusCd": "UNASSIGNED",
+        "warningTypeCd": "warningTypeCd"
+      },
+      {
+        "approvalTs": "2021-01-09T16:51:22.620Z",
+        "approvalExternalId": 0,
+        "approvalCreditAssessmentId": 0,
+        "resolvedPermanentlyInd": "true",
+        "validFor": {
+          "endDateTime": "2022-01-01T16:51:22.620Z",
+          "startDateTime": "2021-01-01T16:51:22.620Z"
+        },
+        "warningCategoryCd": "warningCategoryCd",
+        "warningCd": "warningCd",
+        "warningDetectionTs": "2021-01-10T16:51:22.620Z",
+        "warningHistoryLegacyId": 666666,
+        "warningItemTypeCd": "warningItemTypeCd",
+        "warningStatusCd": "UNASSIGNED",
+        "warningTypeCd": "warningTypeCd"
+      }
+    ]
+  },
+  "relatedParty": [
+    {
+      "engagedParty": {
+        "@referredType": "Individual",
+        "birthDate": "2021-01-09",
+        "contactMedium": [
+          {
+            "characteristic": {
+              "city": "city",
+              "contactType": "contactType",
+              "country": "ptcountry",
+              "postCode": "postCode",
+              "stateOrProvince": "ptstateOrProvince",
+              "street1": "street1",
+              "street2": "street2",
+              "street3": "street3",
+              "street4": "street4",
+              "street5": "street5"
+            },
+            "mediumType": "home address",
+            "preferred": "true",
+            "validFor": {
+              "endDateTime": "2023-01-09T16:51:22.620Z",
+              "startDateTime": "2021-01-09T17:51:22.620Z"
+            }
+          }
+        ],
+        "individualIdentification": [
+          {
+            "identificationId": "identificationId",
+            "identificationType": "drivers license",
+            "issuingAuthority": "issuingAuthority",
+            "issuingDate": "2021-01-09T16:51:22.620Z",
+            "telusCharacteristic": {
+              "countryCd": "idcountryCd",
+              "provinceCd": "idprovinceCd"
+            },
+            "validFor": {
+              "endDateTime": "2021-01-09T16:52:22.620Z",
+              "startDateTime": "2021-01-09T16:51:22.620Z"
+            }
+          }
+        ],
+        "characteristic": [
+          {
+            "name": "EMPLOYMENT_STATUS_CD",
+            "value": "TestStatusCode"
+          },
+          {
+            "name": "PRIM_CRED_CARD_TYP_CD",
+            "value": "TestCardTypeCode"
+          },
+          {
+            "name": "RESIDENCY_CD",
+            "value": "tx"
+          },
+          {
+            "name": "SEC_CRED_CARD_ISS_CO_TYP_CD",
+            "value": "TestCoTypeCode"
+          },
+          {
+            "name": "LEGAL_CARE_CD",
+            "value": "false"
+          }
+        ]
+      }
+    }
+  ],
+  "channel": {
+    "userId": "userlongnguyen",
+    "originatorAppId": "10000001",
+    "channelOrgId": "channelOrganizationId"
+  }
+}

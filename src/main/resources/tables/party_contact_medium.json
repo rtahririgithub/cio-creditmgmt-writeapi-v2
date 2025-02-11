@@ -1,0 +1,113 @@
+[
+  {
+    "column": "CONTACT_MEDIUM_ID",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },
+  {
+    "column": "PARTY_ID",
+    "comment": "UUID reference of party table",
+    "javaType": "String"
+  },
+  {
+    "column": "PREFFERED",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "MEDIUM_TYPE",
+    "javaType": "String"
+  },
+  {
+    "column": "VALID_START_TS",
+    "javaType": "java.sql.Timestamp",
+    "queryType": "Timestamp"
+  },
+  {
+    "column": "VALID_END_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "CONTACT_TYPE",
+    "javaType": "String"
+  },
+  {
+    "column": "STREET1",
+    "javaType": "String"
+  },
+  {
+    "column": "STREET2",
+    "javaType": "String"
+  },
+  {
+    "column": "STREET3",
+    "javaType": "String"
+  },
+  {
+    "column": "STREET4",
+    "javaType": "String"
+  },
+  {
+    "column": "STREET5",
+    "javaType": "String"
+  },
+  {
+    "column": "CITY",
+    "javaType": "String"
+  },
+  {
+    "column": "STATE_PROVINCE_CODE",
+    "javaType": "String"
+  },
+  {
+    "column": "POST_CODE",
+    "javaType": "String"
+  },
+  {
+    "column": "COUNTRY_CODE",
+    "javaType": "String"
+  },
+  {
+    "column": "EMAIL",
+    "javaType": "String"
+  },
+  {
+    "column": "FAX_NUMBER",
+    "javaType": "String"
+  },
+  {
+    "column": "PHONE_NUMBER",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "UPDATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "ORIGINATOR_APP_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "CHANNEL_ORG_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "VERSION",
+    "javaType": "Integer",
+    "insert": false
+  }
+]

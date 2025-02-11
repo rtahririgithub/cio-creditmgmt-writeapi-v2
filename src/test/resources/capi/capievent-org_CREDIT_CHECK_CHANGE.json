@@ -1,0 +1,40 @@
+{
+  "eventId":"505ba970-3a1e-4ed0-9368-7c6e82313d24",
+  "eventTimestamp":"2021-03-04T17:16:46.481Z",
+  "eventType":"CREDIT_CHECK_CHANGE",
+  "transactionDate":"2021-02-18",
+  "notificationSuppressionInd":"false",
+  "auditInfo":{
+    "originatorApplicationId":"APP_HWPURCHASEACCT",
+    "kbUserId":"74382",
+    "salesRepCode":null,
+    "dealerCode":null
+  },
+  "account":{
+    "ban":709010181,
+    "brandId":3,
+    "accountType":"B",
+    "accountSubType":"A",
+    "status":"O",
+    "segmentCode":"TCSO",
+    "subSegmentCode":"OTHR",
+    "language":"EN",
+    "email":"Pavan.V@telus.com"
+  },
+  "creditCheckResult":{
+    "creditScoreNum":600,
+    "creditDecisionMessage":"E29 - A $200 deposit is required. Or offer Prepaid. Review Bureau Warning",
+    "creditClass":"C",
+    "creditLimitAmt":5.0,
+    "depositList":[
+      {
+        "productType": "abc",
+        "depositAmount": 100.2
+      },
+      {
+        "productType": "bcd",
+        "depositAmount": 200.2
+      }
+    ]
+  }
+}

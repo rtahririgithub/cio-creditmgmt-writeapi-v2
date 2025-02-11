@@ -1,0 +1,58 @@
+{
+  "creditProfile": [
+    {
+      "creditProfileTs": "2021-01-15T16:51:22.620Z",
+      "creditRiskLevelNum": 11,
+      "primaryCreditScoreCd": 160,
+      "validFor": {
+        "endDateTime": "2022-01-09T16:51:22.620Z",
+        "startDateTime": "2021-01-09T16:51:22.620Z"
+      },
+      "telusCharacteristic": {
+        "assessmentMessage": "assessmentMessage",
+        "assessmentMessageCode": "assessmentMessageCode",
+        "averageSecurityDepositAmt": "0.5",
+        "bureauDecisionCode": "bureauDecisionCode",
+        "bureauDecisionMessage": "bureauDecisionMessage",
+        "clpCreditLimit": "0.6",
+        "creditAssessmentId": 0,
+        "creditClassCd": "creditClassCd",
+        "creditClassDate": "2021-01-02T16:51:22.620Z",
+        "creditDecisionCd": "creditDecisionCd",
+        "creditDecisionDate": "2021-01-09T16:51:22.620Z",
+        "creditProfileLegacyId": 123456,
+        "creditProgramName": "string",
+        "primaryCreditScoreCd": "primaryCreditScoreCd",
+        "primaryCreditScoreTypeCd": "primaryCreditScoreTypeCd",
+        "riskLevelDecisionCd": "riskLevelDecisionCd",
+        "riskLevelDt": "2021-01-01T16:51:22.620Z",
+        "riskLevelNumber": "riskLevelNumber",
+        "warningHistoryList": [
+          {
+            "approvalTs": "2021-01-09T16:51:22.620Z",
+            "approvalExternalId": 0,
+            "approvalCreditAssessmentId": 0,
+            "memoTypeCd": "memoTypeCd",
+            "resolvedPermanentlyInd": "true",
+            "validFor": {
+              "endDateTime": "2022-01-01T16:51:22.620Z",
+              "startDateTime": "2021-01-01T16:51:22.620Z"
+            },
+            "warningCategoryCd": "warningCategoryCd",
+            "warningCd": "warningCd",
+            "warningDetectionTs": "2021-01-10T16:51:22.620Z",
+            "warningHistoryLegacyId": 666666,
+            "warningItemTypeCd": "warningItemTypeCd",
+            "warningStatusCd": "UNASSIGNED",
+            "warningTypeCd": "warningTypeCd"
+          }
+        ]
+      }
+    }
+  ],
+  "telusAuditCharacteristic": {
+    "userId": "userlongnguyen",
+    "originatorApplicationId": "10000001",
+    "channelOrganizationId": "channelOrganizationId"
+  }
+}

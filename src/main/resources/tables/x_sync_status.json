@@ -1,0 +1,15 @@
+[
+  {
+    "column": "customer_id",
+    "javaType": "Long"
+  },
+  {
+    "column": "need_to_sync",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "publish_ts",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  }
+]

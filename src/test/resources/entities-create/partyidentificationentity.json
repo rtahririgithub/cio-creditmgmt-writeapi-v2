@@ -1,0 +1,51 @@
+{
+  "partyId": "17ad1c92-7657-4ccd-ad88-a1996d80a4c1",
+  "idType": "DL",
+  "validStartTs": "2021-01-09T16:51:22.620",
+  "validEndTs": "2021-01-09T16:52:22.620",
+  "originatorAppId": "10000001",
+  "channelOrgId": "channelOrganizationId",
+  "createdBy": "userlongnguyen",
+  "updatedBy": "userlongnguyen",
+  "characteristics": [
+    {
+      "identificatonId": "17ad1c92-1657-4ccd-ad88-a1996d80a4c1",
+      "key": "provinceCd",
+      "value": "idprovinceCd",
+      "createdBy": "userlongnguyen",
+      "updatedBy": "userlongnguyen",
+      "originatorAppId": "10000001",
+      "channelOrgId": "channelOrganizationId"
+    },
+    {
+      "identificatonId": "17ad1c92-1657-4ccd-ad88-a1996d80a4c1",
+      "key": "issuingAuthority",
+      "value": "issuingAuthority",
+      "createdBy": "userlongnguyen",
+      "updatedBy": "userlongnguyen",
+      "originatorAppId": "10000001",
+      "channelOrgId": "channelOrganizationId"
+    },
+    {
+      "identificatonId": "17ad1c92-1657-4ccd-ad88-a1996d80a4c1",
+      "key": "identificationId",
+      "value": "ENCRYPTED",
+      "createdBy": "userlongnguyen",
+      "updatedBy": "userlongnguyen",
+      "originatorAppId": "10000001",
+      "channelOrgId": "channelOrganizationId"
+    }
+  ],
+  "hashedCharacteristics": [
+    {
+      "identificatonId": "17ad1c92-1657-4ccd-ad88-a1996d80a4c1",
+      "key": "identificationId",
+      "value": "HASHED",
+      "hashType": "FULL",
+      "createdBy": "userlongnguyen",
+      "updatedBy": "userlongnguyen",
+      "originatorAppId": "10000001",
+      "channelOrgId": "channelOrganizationId"
+    }
+  ]
+}

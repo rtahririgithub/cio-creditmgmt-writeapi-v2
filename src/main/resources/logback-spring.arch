@@ -1,0 +1,61 @@
+<configuration>
+    <!-- Custom appender example -->
+    <appender name="CONSOLE_JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <fieldNames>
+                <timestamp>timestamp</timestamp>
+                <version>version</version>
+                <logger>logger</logger>
+                <thread>thread</thread>
+                <level>level</level>
+            </fieldNames>
+        </encoder>
+    </appender>
+
+    <!-- Custom appender example -->
+    <appender name="CONSOLE_JSON_PRETTY" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+
+                <!-- Modifies the timestamp format to fit some pattern -->
+                <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSS'Z'</timestampFormat>
+
+                <!-- Modifies the time zone -->
+                <timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>     
+
+                <!-- Turns single-line json into pretty JSON -->         
+                <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                    <prettyPrint>true</prettyPrint>
+                </jsonFormatter>
+
+            </layout>
+        </encoder>
+    </appender>
+
+    <!--
+    Example profile for logging in a local environment/codespaces. Prints "pretty"
+    JSON logs to the console.
+    -->
+    <springProfile name="local">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE_JSON_PRETTY"/>
+        </root>
+    </springProfile>
+
+    <!--
+    Example profiles for environments "non-prod" and "production". Prints single-line
+    JSON logs to the console.
+    -->
+    <springProfile name="non-prod">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE_JSON"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="production">
+        <root level="WARN">
+            <appender-ref ref="CONSOLE_JSON"/>
+        </root>
+    </springProfile>
+    
+</configuration>

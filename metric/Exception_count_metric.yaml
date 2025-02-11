@@ -1,0 +1,16 @@
+apiVersion: logging.cnrm.cloud.google.com/v1beta1
+kind: LoggingLogMetric
+metadata:
+  name: creditmgmt-exception-count
+spec:
+  filter: "resource.type=\"k8s_container\" AND resource.labels.project_id=\"cdo-gke-private-np-1a8686\" AND resource.labels.location=\"northamerica-northeast1\" AND resource.labels.cluster_name=\"private-na-ne1-001\" AND resource.labels.namespace_name=\"cio-creditmgmt\" AND   textPayload:\"CreditProfileAPIError\" "
+  metricDescriptor:
+    displayName: "creditmgmt_Exception_count"
+    metricKind: "DELTA"
+    valueType: "INT64"
+  projectRef:
+    external: "projects/cdo-gke-private-np-1a8686"
+
+    
+# Within the Google Cloud SDK, create the metric with "  kubectl -n cio-creditmgmt apply -f Exception_count_metric.yaml
+# To confirm it has been created, search for the name or description in the Filter of the Select a metric dropdown https://console.cloud.google.com/monitoring/metrics-explorer?project=cio-stackdriver-np-b75434.

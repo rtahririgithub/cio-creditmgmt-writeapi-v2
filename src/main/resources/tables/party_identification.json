@@ -1,0 +1,56 @@
+[
+  {
+    "column": "IDENTIFICATON_ID",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },
+  {
+    "column": "PARTY_ID",
+    "comment": "UUID reference of party table",
+    "javaType": "String"
+  },
+  {
+    "column": "ID_TYPE",
+    "javaType": "String"
+  },
+  {
+    "column": "VALID_START_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "VALID_END_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "ORIGINATOR_APP_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "CHANNEL_ORG_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "VERSION",
+    "javaType": "Integer",
+    "insert": false
+  },
+  {
+    "column": "CREATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "UPDATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  }
+]

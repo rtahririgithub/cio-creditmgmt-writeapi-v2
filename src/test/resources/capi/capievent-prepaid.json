@@ -1,0 +1,38 @@
+
+
+{
+  "eventType": "CREDIT_CHECK_CREATE",
+  "transactionDate": "2022-03-02",
+  "notificationSuppressionInd": false,
+  "auditInfo": {
+    "originatorApplicationId": "ENTRSALESSVC",
+    "kbUserId": "911521"
+  },
+  "account": {
+    "ban": 70993031,
+    "brandId": 1,
+    "accountType": "I",
+    "accountSubType": "Q",
+    "status": "T",
+    "segmentCode": "TCSO",
+    "subSegmentCode": "OTHR",
+    "language": "EN",
+    "email": "[vishakha84@gmail.com|mailto:vishakha84@gmail.com]"
+  },
+  "billDetail": {
+    "billCycleCode": 88,
+    "billCycleCloseDate": "2022-03-28"
+  },
+  "creditCheckResult": {
+    "creditClass": "Y",
+    "creditLimitAmt": 0,
+    "creditScoreNum": 0,
+    "creditDecisionMessage": "",
+    "depositList": [
+      {
+        "productType": "C",
+        "depositAmount": 0
+      }
+    ]
+  }
+}

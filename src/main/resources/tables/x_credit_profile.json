@@ -1,0 +1,537 @@
+[
+  {
+    "column": "customer_id",
+    "javaType": "Long"
+  },
+  {
+    "column": "credit_profile_id",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },
+  {
+    "column": "credit_profile_id_legacy",
+    "javaType": "Long"
+  },
+  {
+    "column": "credit_profile_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "agency_decision_code",
+    "javaType": "String"
+  },
+  {
+    "column": "credit_score",
+    "javaType": "String"
+  },
+  {
+    "column": "credit_score_type_code",
+    "javaType": "String"
+  },
+  {
+    "column": "credit_risk_rating",
+    "javaType": "String"
+  },
+  {
+    "column": "risk_level_decision_code",
+    "javaType": "String"
+  },
+  {
+    "column": "risk_level_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "clp_rate_plan_amt",
+    "javaType": "java.math.BigDecimal"
+  },
+  {
+    "column": "clp_contract_term",
+    "javaType": "Integer"
+  },
+  {
+    "column": "clp_credit_limit_amt",
+    "javaType": "String"
+  },
+  {
+    "column": "security_dep_amt",
+    "javaType": "String"
+  },
+  {
+    "column": "credit_program_name",
+    "javaType": "String"
+  },
+  {
+    "column": "credit_class_code",
+    "javaType": "String"
+  },
+  {
+    "column": "credit_class_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "credit_decision_code",
+    "javaType": "String"
+  },
+  {
+    "column": "credit_decision_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "credit_assessment_id",
+    "javaType": "String"
+  },
+  {
+    "column": "valid_start_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "valid_end_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "party_id",
+    "javaType": "String"
+  },
+  {
+    "column": "party_role",
+    "javaType": "String"
+  },
+  {
+    "column": "referredtype",
+    "javaType": "String"
+  },
+  {
+    "column": "party_type",
+    "javaType": "String"
+  },
+  {
+    "column": "birth_date",
+    "javaType": "String"
+  },
+  {
+    "column": "contact_medium_id",
+    "javaType": "String"
+  },
+  {
+    "column": "medium_type",
+    "javaType": "String"
+  },
+  {
+    "column": "preffered",
+    "javaType": "String"
+  },
+  {
+    "column": "city",
+    "javaType": "String"
+  },
+  {
+    "column": "contact_type",
+    "javaType": "String"
+  },
+  {
+    "column": "country_code",
+    "javaType": "String"
+  },
+  {
+    "column": "post_code",
+    "javaType": "String"
+  },
+  {
+    "column": "state_province_code",
+    "javaType": "String"
+  },
+  {
+  "column": "street1",
+  "javaType": "String"
+  },
+  {
+    "column": "street2",
+    "javaType": "String"
+  },
+  {
+    "column": "street3",
+    "javaType": "String"
+  },
+  {
+    "column": "street4",
+    "javaType": "String"
+  },
+  {
+    "column": "street5",
+    "javaType": "String"
+  },
+  {
+    "column": "email",
+    "javaType": "String"
+  },
+  {
+    "column": "phone_number",
+    "javaType": "String"
+  },
+  {
+    "column": "dl_num",
+    "javaType": "String"
+  },
+  {
+    "column": "dl_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "dl_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "dl_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "dl_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "psp_num",
+    "javaType": "String"
+  },
+  {
+    "column": "psp_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "psp_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "psp_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "psp_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "cc_tokentext",
+    "javaType": "String"
+  },
+  {
+    "column": "cc_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "cc_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "cc_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "cc_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "hc_num",
+    "javaType": "String"
+  },
+  {
+    "column": "hc_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "hc_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "hc_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "hc_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "prv_num",
+    "javaType": "String"
+  },
+  {
+    "column": "prv_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "prv_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "prv_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "prv_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "sin_num",
+    "javaType": "String"
+  },
+  {
+    "column": "sin_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "sin_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "sin_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "sin_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "bic_num",
+    "javaType": "String"
+  },
+  {
+    "column": "bic_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "bic_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "bic_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "bic_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "cra_num",
+    "javaType": "String"
+  },
+  {
+    "column": "cra_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "cra_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "cra_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "cra_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "nsj_num",
+    "javaType": "String"
+  },
+  {
+    "column": "nsj_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "nsj_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "nsj_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "nsj_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "qst_num",
+    "javaType": "String"
+  },
+  {
+    "column": "qst_country_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "qst_province_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "qst_start_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "qst_expiry_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "created_by",
+    "javaType": "String"
+  },
+  {
+    "column": "created_ts",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "updated_by",
+    "javaType": "String"
+  },
+  {
+    "column": "updated_ts",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "originator_app_id",
+    "javaType": "String"
+  },
+  {
+    "column": "channel_org_id",
+    "javaType": "String"
+  },
+  {
+    "column": "account_type",
+    "javaType": "String"
+  },
+  {
+    "column": "account_subtype",
+    "javaType": "String"
+  },
+  {
+    "column": "status",
+    "javaType": "String"
+  },
+  {
+    "column": "brand_id",
+    "javaType": "String"
+  },
+  {
+    "column": "language",
+    "javaType": "String"
+  },
+  {
+    "column": "status_date",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "status_activity_code",
+    "javaType": "String"
+  },
+  {
+    "column": "status_activity_reason_code",
+    "javaType": "String"
+  },
+  {
+    "column": "create_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "start_service_date",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "dealer_code",
+    "javaType": "String"
+  },
+  {
+    "column": "sales_rep_code",
+    "javaType": "String"
+  },
+  {
+    "column": "corp_acct_rep_code",
+    "javaType": "String"
+  },
+  {
+    "column": "fullname",
+    "javaType": "String"
+  },
+  {
+    "column": "title",
+    "javaType": "String"
+  },
+  {
+    "column": "firstname",
+    "javaType": "String"
+  },
+  {
+    "column": "middle_initial",
+    "javaType": "String"
+  },
+
+  {
+    "column": "lastname",
+    "javaType": "String"
+  },
+  {
+    "column": "legal_business_name",
+    "javaType": "String"
+  },
+  {
+    "column": "populate_method_cd",
+    "javaType": "String"
+  }
+,
+  {
+    "column": "cprofl_format_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "comment_txt",
+    "javaType": "String"
+  },
+  {
+    "column": "bus_last_updt_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "bypass_match_ind",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "employment_status_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "legal_care_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "prim_cred_card_typ_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "residency_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "sec_cred_card_iss_co_typ_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "application_sub_prov_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "cred_check_consent_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "cprofl_cust_map_typ_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "product_category_bolt_on",
+    "javaType": "Boolean"
+  },  
+  { 
+    "column": "LINE_OF_BUSINESS",
+    "javaType": "String"
+  } 
+   
+]

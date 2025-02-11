@@ -1,0 +1,36 @@
+[
+  {
+    "column": "CREDIT_PROFILE_CUSTOMER_ID",
+    "comment": "UUID reference of customer table",
+    "javaType": "String"
+  },
+  {
+    "column": "NEED_TO_SYNC",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "NEED_TO_ENCRYPT",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "NEED_TO_HASH",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "NOTES",
+    "javaType": "String"
+  },
+  {
+    "column": "DATA",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  }
+]

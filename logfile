@@ -1,0 +1,154 @@
+2021-01-04 14:05:24.150 EST [10616] LOG:  starting PostgreSQL 13.1, compiled by Visual C++ build 1914, 64-bit
+2021-01-04 14:05:24.159 EST [10616] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-04 14:05:24.160 EST [10616] LOG:  listening on IPv6 address "::1", port 5432
+2021-01-04 14:05:24.353 EST [13584] LOG:  database system was shut down at 2021-01-04 13:30:58 EST
+2021-01-04 14:05:24.501 EST [10616] LOG:  database system is ready to accept connections
+2021-01-04 17:36:18.321 EST [10616] LOG:  received fast shutdown request
+2021-01-04 17:36:18.354 EST [10616] LOG:  aborting any active transactions
+2021-01-04 17:36:18.357 EST [14216] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.357 EST [7644] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.358 EST [7884] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.366 EST [10604] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.366 EST [8788] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.360 EST [7664] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.370 EST [8664] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.358 EST [13948] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.361 EST [12168] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.360 EST [8044] FATAL:  terminating connection due to administrator command
+2021-01-04 17:36:18.379 EST [10616] LOG:  background worker "logical replication launcher" (PID 12504) exited with exit code 1
+2021-01-04 17:36:18.418 EST [11968] LOG:  shutting down
+2021-01-04 17:36:18.534 EST [10616] LOG:  database system is shut down
+2021-01-04 22:00:32.525 EST [14536] LOG:  starting PostgreSQL 13.1, compiled by Visual C++ build 1914, 64-bit
+2021-01-04 22:00:32.535 EST [14536] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-04 22:00:32.535 EST [14536] LOG:  listening on IPv6 address "::1", port 5432
+2021-01-04 22:00:32.753 EST [10580] LOG:  database system was shut down at 2021-01-04 17:36:18 EST
+2021-01-04 22:00:32.887 EST [14536] LOG:  database system is ready to accept connections
+2021-01-04 22:09:08.233 EST [14248] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.250 EST [9172] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.250 EST [12524] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.256 EST [6876] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.256 EST [15452] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.256 EST [13204] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.258 EST [14652] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.262 EST [15616] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.279 EST [14828] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:09:08.282 EST [11088] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:20:20.566 EST [14536] LOG:  received fast shutdown request
+2021-01-04 22:20:20.595 EST [14536] LOG:  aborting any active transactions
+2021-01-04 22:20:20.599 EST [8028] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.600 EST [14744] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.604 EST [13604] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.604 EST [15660] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.605 EST [16112] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.605 EST [4032] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.607 EST [10956] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.609 EST [11512] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.609 EST [16208] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.610 EST [3624] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.612 EST [13488] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.609 EST [15760] FATAL:  terminating connection due to administrator command
+2021-01-04 22:20:20.642 EST [14536] LOG:  background worker "logical replication launcher" (PID 15024) exited with exit code 1
+2021-01-04 22:20:20.661 EST [4472] LOG:  shutting down
+2021-01-04 22:20:20.784 EST [14536] LOG:  database system is shut down
+2021-01-04 22:22:01.019 EST [12676] LOG:  starting PostgreSQL 13.1, compiled by Visual C++ build 1914, 64-bit
+2021-01-04 22:22:01.028 EST [12676] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-04 22:22:01.029 EST [12676] LOG:  listening on IPv6 address "::1", port 5432
+2021-01-04 22:22:01.204 EST [2952] LOG:  database system was shut down at 2021-01-04 22:20:20 EST
+2021-01-04 22:22:01.358 EST [12676] LOG:  database system is ready to accept connections
+2021-01-04 22:22:01.411 EST [14724] FATAL:  the database system is starting up
+2021-01-04 22:30:58.822 EST [14904] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.822 EST [3060] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.825 EST [15904] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.829 EST [10288] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.834 EST [1916] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.835 EST [9008] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.842 EST [15536] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.842 EST [3980] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.847 EST [15572] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:30:58.853 EST [3844] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.792 EST [14136] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.793 EST [6320] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.799 EST [5384] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.799 EST [12616] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.805 EST [15664] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.805 EST [15520] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.805 EST [9152] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.830 EST [2864] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.830 EST [15236] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-04 22:39:15.830 EST [15732] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.818 EST [10688] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.818 EST [14712] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.818 EST [12788] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.818 EST [14164] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.831 EST [3176] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.832 EST [13492] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.832 EST [14740] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.834 EST [6600] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.853 EST [11028] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:53:17.854 EST [11892] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 09:54:26.149 EST [12876] FATAL:  role "fdfs" does not exist
+2021-01-05 09:55:18.856 EST [12504] FATAL:  role "postgres" does not exist
+2021-01-05 10:13:48.617 EST [16336] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.619 EST [16780] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.626 EST [6292] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.626 EST [15816] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.628 EST [11372] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.629 EST [15100] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.633 EST [17352] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.634 EST [17200] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.634 EST [15604] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 10:13:48.663 EST [13028] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 13:24:19.283 EST [12676] LOG:  received fast shutdown request
+2021-01-05 13:24:19.307 EST [12676] LOG:  aborting any active transactions
+2021-01-05 13:24:19.313 EST [11112] FATAL:  terminating connection due to administrator command
+2021-01-05 13:24:19.314 EST [10984] FATAL:  terminating connection due to administrator command
+2021-01-05 13:24:19.326 EST [12676] LOG:  background worker "logical replication launcher" (PID 15600) exited with exit code 1
+2021-01-05 13:24:19.336 EST [16288] LOG:  shutting down
+2021-01-05 13:24:19.519 EST [12676] LOG:  database system is shut down
+2021-01-05 15:29:58.798 EST [12564] LOG:  starting PostgreSQL 13.1, compiled by Visual C++ build 1914, 64-bit
+2021-01-05 15:29:58.809 EST [12564] LOG:  could not bind IPv4 address "127.0.0.1": unrecognized winsock error 10048
+2021-01-05 15:29:58.809 EST [12564] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2021-01-05 15:29:58.810 EST [12564] LOG:  listening on IPv6 address "::1", port 5432
+2021-01-05 15:29:58.979 EST [10008] LOG:  database system was shut down at 2021-01-05 13:24:19 EST
+2021-01-05 15:29:59.127 EST [12564] LOG:  database system is ready to accept connections
+2021-01-05 15:32:56.175 EST [12564] LOG:  received fast shutdown request
+2021-01-05 15:32:56.204 EST [12564] LOG:  aborting any active transactions
+2021-01-05 15:32:56.215 EST [12564] LOG:  background worker "logical replication launcher" (PID 10740) exited with exit code 1
+2021-01-05 15:32:56.221 EST [2280] LOG:  shutting down
+2021-01-05 15:32:56.407 EST [12564] LOG:  database system is shut down
+2021-01-05 15:32:58.408 EST [14404] LOG:  starting PostgreSQL 13.1, compiled by Visual C++ build 1914, 64-bit
+2021-01-05 15:32:58.432 EST [14404] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-05 15:32:58.433 EST [14404] LOG:  listening on IPv6 address "::1", port 5432
+2021-01-05 15:32:58.648 EST [14740] LOG:  database system was shut down at 2021-01-05 15:32:56 EST
+2021-01-05 15:32:58.829 EST [14404] LOG:  database system is ready to accept connections
+2021-01-05 15:33:04.571 EST [14004] FATAL:  role "postgres" does not exist
+2021-01-05 15:38:32.089 EST [11840] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.094 EST [9672] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.095 EST [10752] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.100 EST [14644] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.101 EST [13176] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.101 EST [14564] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.134 EST [14148] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.137 EST [8904] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.150 EST [13692] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 15:38:32.152 EST [13916] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.205 EST [10808] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.259 EST [15764] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.289 EST [11132] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.289 EST [16832] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.295 EST [14168] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.409 EST [2088] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.416 EST [15004] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.453 EST [11540] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.461 EST [10556] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:15:06.469 EST [16024] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.781 EST [16940] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.782 EST [15092] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.784 EST [17196] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.784 EST [15172] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.788 EST [15716] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.809 EST [16864] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.810 EST [984] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.811 EST [13788] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.821 EST [17136] LOG:  could not receive data from client: unrecognized winsock error 10054
+2021-01-05 16:25:23.822 EST [7084] LOG:  could not receive data from client: unrecognized winsock error 10054

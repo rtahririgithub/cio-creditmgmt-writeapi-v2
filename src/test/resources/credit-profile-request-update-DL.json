@@ -1,0 +1,67 @@
+
+{
+
+  "creditCheckConsentCd": "Y",
+  "applicationProvinceCd": "ON",
+  "lineOfBusiness": "WIRELINE",
+  "creditClassCd": "R",
+  "creditDecisionCd": "testCd",
+  "creditRiskLevelTs": "2013-09-19T10:33:28.768Z",
+  "warnings": [],
+  "relatedParty": [
+    {
+      "id": "10",
+      "role": "Customer",
+      "engagedParty": {
+        "@referredType": "Individual",
+        "birthDate": "1911-01-19",
+        "role": "Customer",
+        "contactMedium": [
+          {
+            "id": "d96278bb-1a1b-4918-b0b0-e0847971b421",
+            "mediumType": "postalAddress",
+            "characteristic": {
+              "city": "Vancouver",
+              "contactType": null,
+              "country": null,
+              "postCode": "V73hd1",
+              "stateOrProvince": "BC",
+              "street1": "1234 haro str",
+              "street2": null,
+              "street3": null,
+              "street4": null,
+              "street5": null,
+              "email": null,
+              "phoneNumber": null
+            }
+          }
+        ],
+        "individualIdentification": [
+          {
+            "identificationId": "DL445566",
+            "identificationType": "DL",
+            "telusCharacteristic": {
+              "provinceCd": "BC",
+              "identificationTypeCd": "DL"
+            },
+            "@type": "TelusIndividualIdentification",
+            "@baseType": "IndividualIdentification"
+          }
+        ]
+      },
+      "@type": "Customer"
+    }
+  ],
+  "statusCd": "A",
+  "customerCreditProfileRelCd": "PRI",
+  "creditProfileLegacyId": 1100517656,
+  "riskLevelRiskAssessment": {},
+  "attachments": [],
+  "channel": {
+    "userId": "122365",
+    "channelOrgId": "",
+    "originatorAppId": "1234"
+  },
+  "@type": "TelusCreditProfile",
+  "@baseType": "CreditProfile"
+}

@@ -1,0 +1,60 @@
+[
+  {
+    "column": "PRODUCT_QUAL_ID",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },
+  {
+    "column": "PRODUCT_QUAL_LEGACY_ID",
+    "javaType": "Long"
+  },  
+  {
+    "column": "CREDIT_APPRVD_PROD_CATGY_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_PROFILE_ID",
+    "comment": "UUID reference of credit_profile table",
+    "javaType": "String"
+  },
+  {
+    "column": "PRODUCT_QUAL_IND",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "VALID_START_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "VALID_END_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "ORIGINATOR_APP_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "UPDATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+  "column": "VERSION",
+  "javaType": "Integer",
+  "insert": false
+  }
+]

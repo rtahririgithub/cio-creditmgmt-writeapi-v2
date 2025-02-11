@@ -1,0 +1,67 @@
+[
+  {
+    "column": "customer_id",
+    "javaType": "Long"
+  },
+  {
+    "column": "warning_id",
+    "javaType": "Long",
+    "insert": false
+  },
+  {
+    "column": "warning_legacy_id",
+    "javaType": "Long"
+  },
+  {
+    "column": "warning_category_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "warning_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "warning_type_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "warning_item_type_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "status_id",
+    "javaType": "String"
+  },
+  {
+    "column": "resolved_flag",
+    "javaType": "String"
+  },
+  {
+    "column": "warning_detection_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "credit_assessment_id",
+    "javaType": "String"
+  },
+  {
+    "column": "approval_dt",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "approval_external_id",
+    "javaType": "String"
+  },
+  {
+    "column": "memo_type_cd",
+    "javaType": "String"
+  },
+  {
+    "column": "valid_end_ts",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "valid_start_ts",
+    "javaType": "java.sql.Timestamp"
+  }
+]

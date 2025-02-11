@@ -1,0 +1,47 @@
+[
+  {
+    "column": "CREDIT_PROFILE_CUSTOMER_ID",
+    "comment": "UUID reference of customer table",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_PROFILE_ID",
+    "comment": "UUID reference of credit_profile table",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "UPDATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "ORIGINATOR_APP_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "CHANNEL_ORG_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "VERSION",
+    "javaType": "Integer",
+    "insert": false
+  },
+  {
+    "column": "CUSTOMER_CREDIT_PROFILE_REL_CD",
+    "javaType": "String"
+  }
+]

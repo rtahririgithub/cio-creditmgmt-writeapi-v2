@@ -1,0 +1,24 @@
+{
+  "creditProfile": [
+    {
+      "creditRiskLevelNum": "setCreditRiskRating",
+      "primaryCreditScoreCd": "score",
+      "telusCharacteristic": {
+        "primaryCreditScoreCd": "score",
+        "creditClassCd": "setCreditClassCd",
+        "creditDecisionCd": "setCreditDecisionCd",
+        "riskLevelNumber": "setCreditRiskRating",
+        "riskLevelDecisionCd": "setRiskLevelDecisionCd",
+        "warningHistoryList": [
+          {
+            "warningCategoryCd": "setWarningCategoryCd",
+            "warningCd": "setWarningCd",
+            "warningTypeCd": "setWarningTypeCd",
+            "warningItemTypeCd": "setWarningItemTypeCd",
+            "warningStatusCd": "setWarningStatusCd"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+[
+  {
+    "column": "CREDIT_PROFILE_ID",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },
+  {
+    "column": "CREDIT_PROFILE_ID_LEGACY",
+    "javaType": "Long"
+  },
+  {
+    "column": "CREDIT_PROFILE_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "AGENCY_DECISION_CODE",
+    "javaType": "String"
+  },
+  {
+    "column": "AGENCY_DECISION_DESC",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_SCORE",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_SCORE_TYPE_CODE",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_RISK_RATING",
+    "javaType": "String"
+  },
+  {
+    "column": "RISK_LEVEL_DECISION_CODE",
+    "javaType": "String"
+  },
+  {
+    "column": "RISK_LEVEL_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "CLP_RATE_PLAN_AMT",
+    "javaType": "java.math.BigDecimal"
+  },
+  {
+    "column": "CLP_CONTRACT_TERM",
+    "javaType": "Integer"
+  },
+  {
+    "column": "CLP_CREDIT_LIMIT_AMT",
+    "javaType": "java.math.BigDecimal"
+  },
+  {
+    "column": "SECURITY_DEP_AMT",
+    "javaType": "java.math.BigDecimal"
+  },
+  {
+    "column": "CREDIT_PROGRAM_NAME",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_CLASS_CODE",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_CLASS_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "CREDIT_DECISION_CODE",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_DECISION_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "CREDIT_ASSESSMENT_ID",
+    "javaType": "Long"
+  },
+  {
+    "column": "VALID_START_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "VALID_END_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "CREATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "UPDATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "ORIGINATOR_APP_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "CHANNEL_ORG_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "VERSION",
+    "javaType": "Integer",
+    "insert": false
+  },
+  {
+    "column": "APPLICATION_SUB_PROV_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_CHECK_CONSENT_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "LINE_OF_BUSINESS",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_PROFILE_STATUS_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "CREDIT_PROFILE_STATUS_TS",
+    "javaType": "String"
+  },
+  {
+    "column": "POPULATE_METHOD_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "CPROFL_FORMAT_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "COMMENT_TXT",
+    "javaType": "String"
+  },
+  {
+    "column": "BUS_LAST_UPDT_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "BYPASS_MATCH_IND",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "PRODUCT_CATEGORY_BOLT_ON",
+    "javaType": "Boolean"
+  }
+]

@@ -1,0 +1,1898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- Run: mvn eclipse:clean eclipse:eclipse mvn clean install -->
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>telus-maven.plugin-management</groupId>
+	<artifactId>telus-base-build</artifactId>
+
+	<version>1.4.6</version>
+	<name>TELUS Maven 3 plugin-management Build</name>
+	<packaging>pom</packaging>
+
+	<properties>
+
+		<telus.telus-config-plugin.version>1.1.4</telus.telus-config-plugin.version>
+
+		<telus.javac.source>1.6</telus.javac.source>  <!-- want to enable assertions (-source 1.6) -->
+		<telus.javac.target>1.6</telus.javac.target>  <!-- compiled classes to be compatible with JVM 1.6  -->
+
+
+		<cctimestamp>${maven.build.timestamp}</cctimestamp>
+		<label>buildBy-${user.name}-${cctimestamp}</label>
+		<fw.version>unkown</fw.version>
+
+
+		<!--  append the artifact's baseVersion (SNAPSHOT) and not uniqueVersion  -->
+		<mdep.useBaseVersion>true</mdep.useBaseVersion>
+		<coherence-version>12.1.2-0-0</coherence-version>
+
+		<!-- Need this for French -->
+		<project.build.sourceEncoding>ISO-8859-15</project.build.sourceEncoding>
+		<UTF-8.encoding>UTF-8</UTF-8.encoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+ 
+		
+		<maven-gar-plugin.generatePof>false</maven-gar-plugin.generatePof>
+
+		<telus-libtree-plugin.version>1.0.2</telus-libtree-plugin.version>
+		<telus-libtree-plugin.skip>true</telus-libtree-plugin.skip>
+		<telus-libtree-plugin.outputType>liblist</telus-libtree-plugin.outputType>
+		<telus-libtree-plugin.excludes>:luna*,safenet:,:dfc,:telus-core</telus-libtree-plugin.excludes>
+		<telus-libtree-plugin.includes></telus-libtree-plugin.includes>
+
+		<maven.jxr.skip>true</maven.jxr.skip>
+		<enforcer.skip>false</enforcer.skip>
+		<enforcer.failFast>false</enforcer.failFast>
+		<!-- Flag to fail the build if a version check fails -->
+		<enforcer.fail>true</enforcer.fail>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
+		<source.skip>true</source.skip>
+		<!-- maven-source-plugin.attach -->
+		<source.attach>false</source.attach>
+		<maven-source-plugin.outputDirectory>${project.build.directory}</maven-source-plugin.outputDirectory>
+		<!-- Maven-dependency-plugin skip -->
+		<mdep.skip>true</mdep.skip>
+		<maven-dependency-plugin.outputDirectory>${basedir}/lib</maven-dependency-plugin.outputDirectory>
+		<maven-dependency-plugin.phase>install</maven-dependency-plugin.phase>
+
+		<maven.repo>/work/storage/telusbuild/webapps/ROOT/maven</maven.repo>
+
+		<!-- maven version between 3.0.4 (include) and 3.1.2 (exclude) -->
+		<maven.version>[3.0.4,3.5.0)</maven.version>
+
+
+		<telusdependency.resolveDependency>false</telusdependency.resolveDependency>
+		<telus.telusdependency-maven-plugin.version>1.0.2</telus.telusdependency-maven-plugin.version>
+
+		<genwsdl.include.userpassword.for.basic.auth>true</genwsdl.include.userpassword.for.basic.auth>
+
+		<!-- Use by xmlToWsdl_v4_0.xslt and up -->
+		<!--
+		https://team.collaborate.tsl.telus.com/sites/btaa/IA_Standards/SitePages/WSDL%20Generation%20Guide.aspx#XSLT_VERSION_4_0
+		-->
+		<genwsdl.generate.major.version.wsdl>true</genwsdl.generate.major.version.wsdl>
+		<genwsdl.generate.rest.style>false</genwsdl.generate.rest.style>
+
+		<!--Version 1.2.0 This style sheet (v3_2.xslt) will point to the
+		 - ping_v2  (Need to import ping2 on the implemtation class
+		 - PolicyException has been removed
+		 - You need to change the implementation class to import ping_v2 and remove PolicyException
+		-->
+		<genwsdl.xmlToWsdl.xslt>http://xmlschema.tmi.telus.com/xsd/common/utils/xmlToWsdl/xmlToWsdl_v4_0.xslt</genwsdl.xmlToWsdl.xslt>
+
+		<genwsdl.service.definition>YourServiceDefinition_v1_0.xml</genwsdl.service.definition>
+		<genwsdl.local.wsdl.file>Your.wsdl</genwsdl.local.wsdl.file>
+		<genwsdl.http.xsd.file>http://xmlschema.tmi.telus.com/srv/MSO/CampaignMgmt/DemoServiceRequestResponse_v1_0.xsd</genwsdl.http.xsd.file>
+		<genwsdl.local.xsd.file>DemoServiceRequestResponse_v1_0.xsd</genwsdl.local.xsd.file>
+
+		<telus.endorsed.dir>${project.build.directory}/endorsed</telus.endorsed.dir>
+
+		<!-- http://marxsoftware.blogspot.ca/2010/10/javacs-xlint-options.html -->
+		<telus.javac.xlint>-Xlint:all</telus.javac.xlint>
+		<telus.ejbVersion.version>2.1</telus.ejbVersion.version>
+		<telus.generateEjbClient>false</telus.generateEjbClient>
+
+
+		<!--==== Plugin Versions ================================================================================== -->
+
+
+		<telus.booleangetter.version>1.0</telus.booleangetter.version>
+		<!-- version 1.0.9 1.7 to 1.8 -->
+		<telus.build-helper-maven-plugin.version>1.8</telus.build-helper-maven-plugin.version>
+		<telus.collection-setter-injector.version>0.5.0-1</telus.collection-setter-injector.version>
+
+		<telus.maven-clean-plugin.version>2.5</telus.maven-clean-plugin.version>
+		<!-- <telus.maven-eclipse-plugin.version>2.9</telus.maven-eclipse-plugin.version> -->
+		<telus.maven-ejb-plugin.version>2.4</telus.maven-ejb-plugin.version>
+		<telus.maven-jar-plugin.version>2.4</telus.maven-jar-plugin.version>
+
+
+		<maven.site.skip>false</maven.site.skip>
+		<telus.maven-install-plugin.version>2.3.1</telus.maven-install-plugin.version>
+		<telus.maven-overview-plugin.version>1.6</telus.maven-overview-plugin.version>
+		<telus.maven-resources-plugin.version>2.6</telus.maven-resources-plugin.version>
+
+		<telus.emma-maven-plugin.version>1.0-alpha-3</telus.emma-maven-plugin.version>
+		<telus.maven-surefire-plugin.forkMode>once</telus.maven-surefire-plugin.forkMode>
+		<telus.maven-surefire-plugin.reportFormat>xml</telus.maven-surefire-plugin.reportFormat>
+
+		<telus.versions-maven-plugin.version>2.0</telus.versions-maven-plugin.version>
+		<telus.weblogic-maven-plugin.version>1.0.0</telus.weblogic-maven-plugin.version>
+
+		<telus.core-plugins-support.version>1.0.0</telus.core-plugins-support.version>
+		<telus.eclipse.m2e.version>1.0.0</telus.eclipse.m2e.version>
+		<telus.cxf-xjc-plugin.version>2.6.0</telus.cxf-xjc-plugin.version>
+		<telus.cxf-xjc-dv-plugin.version>2.6.0</telus.cxf-xjc-dv-plugin.version>
+		<telus.cxf-xjc-boolean-plugin.version>2.6.0</telus.cxf-xjc-boolean-plugin.version>
+		<telus.replacer-plugin.version>1.5.2</telus.replacer-plugin.version>
+		<telus.maven-source-plugin.version>2.2.1</telus.maven-source-plugin.version>
+
+		<!-- version 1.0.9 1.3 to 1.7 -->
+		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
+		<!-- version 1.0.9 2.2-beta-5 to 2.4 -->
+		<telus.maven-assembly-plugin.version>2.4</telus.maven-assembly-plugin.version>
+		<!-- version 1.0.9 3.0 to 3.3 -->
+		<telus.maven-site-plugin.version>3.3</telus.maven-site-plugin.version>
+		<!-- version 1.0.9 2.9 to 2.9.1 -->
+		<telus.maven-javadoc-plugin.version>2.9.1</telus.maven-javadoc-plugin.version>
+		<!-- version 1.0.9 2.0 to 2.1 -->
+		<telus.versions-maven-plugin.version>2.1</telus.versions-maven-plugin.version>
+		<!-- version 1.0.9 2.5.1 to 2.8 -->
+		<telus.maven-dependency-plugin.version>2.8</telus.maven-dependency-plugin.version>
+		<!-- version 1.0.9 2.3.1 to 2.5.1 -->
+		<telus.maven-install-plugin.version>2.5.1</telus.maven-install-plugin.version>
+		<!-- version 1.0.9 2.3 to 2.4 -->
+		<telus.maven-jxr-plugin.version>2.3</telus.maven-jxr-plugin.version>
+
+		<!-- version 1.?? 2.8 to 2.9 -->
+		<telus.maven-changes-plugin.version>2.9</telus.maven-changes-plugin.version>
+		<!-- version 1.?? 2.3.2 to 3.1 -->
+		<telus.maven-compiler-plugin.version>3.1</telus.maven-compiler-plugin.version>
+		<!-- Added on 1.?? 1.2 to 1.3.1 -->
+		<telus.maven-enforcer-plugin.version>1.3.1</telus.maven-enforcer-plugin.version>
+		<!-- version 1.?? 1.4 to 1.5 -->
+		<telus.aspectj-maven-plugin.version>1.5</telus.aspectj-maven-plugin.version>
+		<!-- version 1.?? 2.7 to 2.8.1 -->
+		<telus.maven-deploy-plugin.version>2.8.1</telus.maven-deploy-plugin.version>
+		<!-- version 1.?? 2.8 to 2.9 -->
+		<telus.maven-ear-plugin.version>2.9</telus.maven-ear-plugin.version>
+		<!-- version 1.?? 2.14.1 to 2.16 -->
+		<telus.maven-surefire-plugin.version>2.16</telus.maven-surefire-plugin.version>
+		<!-- version 1.?? 2.3 to 2.4 -->
+		<telus.maven-war-plugin.version>2.4</telus.maven-war-plugin.version>
+
+
+		<!-- Use by wsimport -->
+		<telus.collection-setter-injector.version>0.5.0-1</telus.collection-setter-injector.version>
+		<telus.jaxb2-basics.version>0.6.3</telus.jaxb2-basics.version>
+		<telus.jaxb2-basics-runtime.version>0.6.3</telus.jaxb2-basics-runtime.version>
+		<telus.jaxb-api.version>2.2.4</telus.jaxb-api.version>
+		<telus.jaxws-api.version>2.2.8</telus.jaxws-api.version>
+		<telus.jaxws-maven-plugin.version>2.2</telus.jaxws-maven-plugin.version>
+		<telus.jaxws-rt.version>2.2.6</telus.jaxws-rt.version>
+		<telus.jaxb-xjc.version>2.2.5</telus.jaxb-xjc.version>
+		<!-- Only used by JAXRPC (optional) -->
+		<wsclient.serviceName />
+
+		<!-- NOTE: If you are running prior step like wsdlc10, do not removeOldOutput -->
+
+		<jaxb.schemaInclude>Permit.xsd</jaxb.schemaInclude>
+		<!-- Set it to false if you need to run with -nv, this disables strict
+			validation of schemas -->
+		<jaxb.strict>true</jaxb.strict>
+		<jaxb.schemaExclude>test*.xsd</jaxb.schemaExclude>
+		<jaxb.bindingInclude>*.xjb</jaxb.bindingInclude>
+		<jaxb.bindingExclude>test.xjb</jaxb.bindingExclude>
+		<jaxb.verbose>false</jaxb.verbose>
+		<jaxb.debug>false</jaxb.debug>
+		<jaxb.schemaDirectory>src/main/resources</jaxb.schemaDirectory>
+		<jaxb.removeOldOutput>true</jaxb.removeOldOutput>
+		<telus.maven-jaxb2-plugin.version>0.8.3</telus.maven-jaxb2-plugin.version>
+
+		<maven.test.skip>true</maven.test.skip>
+		<!-- <surefire.plugin-skipTests>true</surefire.plugin-skipTests> -->
+		<surefire.plugin-argLine></surefire.plugin-argLine>
+		<surefire.plugin-additionalClasspathElement></surefire.plugin-additionalClasspathElement>
+		<clean.verbose>false</clean.verbose>
+		<jaxws-maven-plugin.verbose>false</jaxws-maven-plugin.verbose>
+
+	</properties>
+
+	<!-- http://stackoverflow.com/questions/9115765/is-it-possible-to-use-maven-buildnumber-plugin-to-generate-build-number-without -->
+
+	<scm>
+		<connection>scm:clearcase:http://127.0.0.1/dummy</connection>
+		<developerConnection>scm:clearcase:https://127.0.0.1/dummy</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://127.0.0.1/dummy</url>
+	</scm>
+
+
+	<distributionManagement>
+	   <repository>
+	        <id>telus-mavenrepository</id>
+	        <url>http://mavenrepository.tsl.telus.com/nexus/content/repositories/telus-m3</url>
+	   </repository>
+	   <snapshotRepository>
+	        <id>telus-mavenrepository</id>
+	        <url>http://mavenrepository.tsl.telus.com/nexus/content/repositories/telus-m3-snapshots</url>
+	    </snapshotRepository>
+	    <site>
+	      <id>telus-mavenrepository</id>
+	      <!--  Always set the <url> from a aggregator POM. Deploying the site is done by using the site-deploy phase of the site lifecycle -->
+		  <!--  If maintaining a site for specific versions, over-ride the distributionManagement section with the following url format:
+		  <url>dav:http://mavenrepository.tsl.telus.com/nexus/content/sites/telus-documentation/${project.groupId}/${project.version}/${project.artifactId}</url>
+		  -->
+
+	      <url>dav:http://mavenrepository.tsl.telus.com/nexus/content/sites/telus-documentation/${project.groupId}/${project.artifactId}</url>
+	    </site>
+	</distributionManagement>
+
+	<profiles>
+		<profile>
+			<id>Eclipse</id>
+			<properties>
+			<label>Eclipse-buildBy-${user.name}-${cctimestamp}</label>
+				<maven.repo>${user.home}/.maven/repository</maven.repo>
+				<clean.verbose>true</clean.verbose>
+				<jaxws-maven-plugin.verbose>true</jaxws-maven-plugin.verbose>
+				<jaxb.verbose>true</jaxb.verbose>
+				<!-- default to True if Profile Eclipse is not used -->
+				<genwsdl.include.userpassword.for.basic.auth>false</genwsdl.include.userpassword.for.basic.auth>
+			</properties>
+		</profile>
+		<profile>
+			<id>BuildServer</id>
+            <build>
+                <plugins>
+					<plugin>
+						<groupId>com.google.code.maven-replacer-plugin</groupId>
+						<artifactId>replacer</artifactId>
+						<version>${telus.replacer-plugin.version}</version>
+						<executions>
+							
+							<execution>
+								<id>replace-environment-properties</id>
+								<phase>process-test-resources</phase>
+								<goals>
+									<goal>replace</goal>
+								</goals>
+								<configuration>
+									<escape>true</escape>
+									<regex>false</regex>
+									<preserveDir>false</preserveDir>
+									<quiet>false</quiet>
+									<basedir>${basedir}</basedir>
+									<includes>
+										<include>src/test/resources/environment*.properties</include>
+									 </includes>
+									<outputDir>target/test-classes</outputDir>
+									<replacements>
+										<replacement>
+											<token>BASEDIR</token>
+											<value>${basedir}</value>
+										</replacement>
+								   
+										<replacement>
+											<token>USERDIR</token>
+											<value>${user.dir}</value>
+										</replacement>
+										<replacement>
+											<token>WORKSPACE</token>
+											<value>${env.WORKSPACE}</value>
+										</replacement>
+									</replacements>
+								</configuration>
+							</execution>
+						</executions>
+                    
+                    </plugin>
+                </plugins>
+            </build>    
+		</profile>
+
+		<profile>
+		    <!-- disable doclint for jdk18 and up -->
+			<id>disable-doclint</id>
+			<activation>
+				<jdk>[1.8,)</jdk>
+			</activation>
+			
+			<build>
+				<plugins>
+				  <plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<configuration>
+					  <additionalparam>-Xdoclint:none</additionalparam>
+					</configuration>
+				  </plugin>
+				  <plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+					  <reportPlugins>
+						<plugin>
+						  <groupId>org.apache.maven.plugins</groupId>
+						  <artifactId>maven-javadoc-plugin</artifactId>
+						  <configuration>
+							<additionalparam>-Xdoclint:none</additionalparam>
+						  </configuration>
+						</plugin>
+					  </reportPlugins>
+					</configuration>
+				  </plugin>
+				</plugins>
+			</build>
+		</profile>		
+		
+        <profile>
+            <id>jdk14</id>
+            <properties>
+                <telus.javac.source>1.4</telus.javac.source>
+                <telus.javac.target>1.4</telus.javac.target>
+                <ejb.classifier>jdk14</ejb.classifier>
+                <classifier>jdk14</classifier>
+            </properties>
+        </profile>
+
+		<profile>
+			<id>jdk16</id>
+			<properties>
+				<telus.javac.source>1.6</telus.javac.source>
+				<telus.javac.target>1.6</telus.javac.target>
+				<ejb.classifier>jdk16</ejb.classifier>
+				<classifier>jdk16</classifier>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>jdk17</id>
+			<properties>
+				<telus.javac.source>1.7</telus.javac.source>
+				<telus.javac.target>1.7</telus.javac.target>
+				<ejb.classifier>jdk17</ejb.classifier>
+				<classifier>jdk17</classifier>
+			</properties>
+		</profile>
+		<profile>
+			<id>ReleaseBuild</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>${telus.maven-enforcer-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>enforce-requireReleaseVersion</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<phase>validate</phase>
+								<configuration>
+									<rules>
+
+
+										<!-- Check that the current project is not a SNAPSHOT version -->
+										<!-- RequireReleaseVersion/ -->
+										<requireReleaseVersion>
+
+											<message>You cannot Release as a SNAPSHOT version to
+												production. Remove the SNAPSHOT qualifier from the version.</message>
+
+										</requireReleaseVersion>
+
+									</rules>
+
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+
+			</properties>
+		</profile>
+	</profiles>
+
+
+	<build>
+		<!-- <sourceDirectory>src</sourceDirectory> -->
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<excludes>
+					<exclude>**/.copyarea.db</exclude>
+					<exclude>**/harvest.sig</exclude>
+					<exclude>**/placeholder.*</exclude>
+					<exclude>**/**.keep*</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+
+		</resources>
+
+
+		<plugins>
+<!--	
+        	<plugin>
+				<groupId>com.oracle.coherence</groupId>
+				<artifactId>maven-gar-plugin</artifactId>
+				<version>${coherence-version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<generatePof>${maven-gar-plugin.generatePof}</generatePof>
+				</configuration>
+	    	</plugin>
+-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${telus.maven-dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>${maven-dependency-plugin.phase}</phase>
+						<configuration>
+							<skip>${mdep.skip}</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- replace BUILDLABEL and BUILDATE in appCtx.properties -->
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>${telus.replacer-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>replace-buildLabel-n-buildDate-for-war</id>
+						<phase>prepare-package</phase>
+
+						<goals>
+							<goal>replace</goal>
+						</goals>
+						<configuration>
+							<!-- <ignoreMissingFile>true</ignoreMissingFile> <file>${basedir}/src/main/resources/appCtx.properties</file>
+							<outputFile>${basedir}/target/classes/appCtx.properties</outputFile>
+							-->
+
+							<preserveDir>false</preserveDir>
+							<quiet>false</quiet>
+							<basedir>${basedir}</basedir>
+							<ignoreErrors>false</ignoreErrors>
+							<includes>
+
+								<!--
+								Have to remove this as this gets included to the *-app-config.jar
+								<include>batch/*/conf-app/appCtx*.properties</include>
+								<include>src/main/resources/appCtx*.properties</include>
+								-->
+
+								<include>src/main/resources/appCtx.properties</include>
+
+							</includes>
+							<outputDir>target/classes</outputDir>
+
+
+						</configuration>
+
+					</execution>
+					<execution>
+						<id>replace-buildLabel-n-buildDate-for-ear</id>
+						<phase>prepare-package</phase>
+
+						<goals>
+							<goal>replace</goal>
+						</goals>
+						<configuration>
+							<!-- <ignoreMissingFile>true</ignoreMissingFile> <file>${basedir}/src/main/resources/appCtx.properties</file>
+							<outputFile>${basedir}/target/classes/appCtx.properties</outputFile>
+							-->
+
+							<preserveDir>false</preserveDir>
+							<quiet>false</quiet>
+							<basedir>${basedir}</basedir>
+							<ignoreErrors>false</ignoreErrors>
+							<includes>
+
+								<!--
+								Have to remove this as this gets included to the *-app-config.jar
+								<include>batch/*/conf-app/appCtx*.properties</include>
+								<include>src/main/resources/appCtx*.properties</include>
+								-->
+
+								<include>src/main/template/appCtx.properties</include>
+
+							</includes>
+							<!-- This is for war and ear deployment, override with "." for batch -->
+							<outputDir>src/main/application/APP-INF/classes</outputDir>
+
+
+						</configuration>
+
+					</execution>
+					<execution>
+						<id>replace-environment-properties</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+						<configuration>
+						    <escape>true</escape>
+                            <regex>false</regex>
+							<preserveDir>false</preserveDir>
+							<quiet>false</quiet>
+							<basedir>${basedir}</basedir>
+							<includes>
+								<include>src/test/resources/environment*.properties</include>
+							</includes>
+							<outputDir>target/test-classes</outputDir>
+							<replacements>
+								<replacement>
+									<token>BASEDIR</token>
+									<value>${basedir}</value>
+								</replacement>
+                                <!-- replace \  with / for window --> 
+								<replacement>
+									<token>\</token>
+									<value>/</value>
+								</replacement>								
+								<replacement>
+									<token>USERDIR</token>
+									<value>${user.dir}</value>
+								</replacement>
+								<replacement>
+									<token>WORKSPACE</token>
+									<value>${env.WORKSPACE}</value>
+								</replacement>
+							</replacements>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<replacements>
+
+						<replacement>
+							<token>appVersion=.*</token>
+							<value>appVersion=${project.version}</value>
+
+						</replacement>
+						<replacement>
+							<token>appVersion=([^.]*).([^.]*).*</token>
+							<value>appVersion=$1_$2</value>
+						</replacement>
+
+
+						<replacement>
+							<token>deploymentFile=.*</token>
+							<value>
+fwVersion=${fw.version}
+deploymentFile=${project.build.finalName}.${project.packaging}
+							</value>
+						</replacement>
+						<replacement>
+							<token>uildDate=.*</token>
+							<value>uildDate=${cctimestamp}</value>
+						</replacement>
+						<replacement>
+							<token>ApplicationVersion=.*</token>
+							<value>ApplicationVersion=${cctimestamp}</value>
+						</replacement>
+						<replacement>
+							<token>BUILDLABEL</token>
+							<value>${label}</value>
+						</replacement>
+
+						<replacement>
+							<token>uildLabel=.*</token>
+							<value>uildLabel=${label}</value>
+						</replacement>
+						<replacement>
+							<token>appName=.*</token>
+							<value>appName=${project.artifactId}</value>
+						</replacement>
+					</replacements>
+				</configuration>
+
+			</plugin>
+
+
+			<plugin>
+				<groupId>telus-maven.plugins</groupId>
+				<artifactId>telus-libtree-plugin</artifactId>
+				<version>${telus-libtree-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>libtree</goal>
+						</goals>
+
+						<configuration>
+							<skip>${telus-libtree-plugin.skip}</skip>
+							<excludes>${telus-libtree-plugin.excludes}</excludes>
+							<includes>${telus-libtree-plugin.includes}</includes>
+
+							<outputFile>lib/libList.txt</outputFile>
+							<outputType>${telus-libtree-plugin.outputType}</outputType>
+
+							<!-- Must be false -->
+							<verbose>false</verbose>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>${telus.maven-assembly-plugin.version}</version>
+
+				<executions>
+					<execution>
+						<id>bundle-tar</id>
+						<phase>install</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+
+						<configuration>
+							<skipAssembly>true</skipAssembly>
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptors>
+								<descriptor>${basedir}/src/main/assembly/assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+
+					</execution>
+				</executions>
+
+			</plugin>
+
+			<!-- version: 1.0.9 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${telus.maven-enforcer-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>Maven-enforcer</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<phase>validate</phase>
+						<configuration>
+							<skip>${enforcer.skip}</skip>
+							<fail>${enforcer.fail}</fail>
+							<rules>
+
+								<!-- 'uniqueVersions' (default:false) can be set to true if you want
+									to compare the timestamped SNAPSHOTs -->
+								<!-- <uniqueVersions>true</uniqueVersions> -->
+								<!-- <requireUpperBoundDeps> </requireUpperBoundDeps> -->
+								<requireJavaVersion>
+									<version>[1.6,)</version>
+								</requireJavaVersion>
+
+								<banCircularDependencies />
+
+								<requireMavenVersion>
+									<version>${maven.version}</version>
+								</requireMavenVersion>
+
+								<!-- http://maven.apache.org/enforcer/enforcer-rules/dependencyConvergence.html
+									http://stackoverflow.com/questions/16100315/solving-maven-dependency-convergence-issues -->
+								<!-- <DependencyConvergence/> -->
+								<!-- http://books.google.ca/books?id=dRm8AQAAQBAJ&pg=PT132&lpg=PT132&dq=maven-enforcer-plugin+AlwaysPass&source=bl&ots=ILonLm5S8f&sig=KUDXK6_Nxuwydv5yLYNXvXPUPBI&hl=en&sa=X&ei=sg30UsGNAcfaoATW9YKwDA&ved=0CF0Q6AEwBzgK#v=onepage&q=maven-enforcer-plugin%20AlwaysPass&f=false -->
+
+								<!-- Check if no SNAPSHOT is included as a dependency -->
+
+								<!-- RequireReleaseDeps/ -->
+								<!-- http://blog.sonatype.com/2009/01/best-practices-for-releasing-with-3rd-party-snapshot-dependencies/#.UyckIrShGVA -->
+								<RequireReleaseDeps>
+
+									<message>No SNAPSHOT allowed for Release(solid) version! </message>
+									<message>To fix the error, make sure the version contains
+										-SNAPSHOT during development.</message>
+
+									<failWhenParentIsSnapshot>false</failWhenParentIsSnapshot>
+									<onlyWhenRelease>true</onlyWhenRelease>
+								</RequireReleaseDeps>
+
+								<!-- Check that the current project is not a SNAPSHOT version -->
+								<!-- <requireReleaseVersion> <message>No Snapshots Allowed!</message>
+									</requireReleaseVersion> -->
+							</rules>
+
+						</configuration>
+					</execution>
+<!--
+					<execution>
+						<id>enforce-cmdbAppID-property-is-set</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireProperty>
+									<message><![CDATA[[WARNING] Must add <properties><cmdbAppId>1234</cmdbAppId></properties> to your application pom.xml in the root by 2016 ]]></message>
+									<property>cmdbAppID</property>
+								</requireProperty>
+							</rules>
+							<fail>false</fail>
+						</configuration>
+					</execution>
+-->
+				</executions>
+			</plugin>
+
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+ 
+				<plugin>
+					<groupId>com.oracle.coherence</groupId>
+					<artifactId>maven-gar-plugin</artifactId>
+					<version>${coherence-version}</version>
+					<extensions>true</extensions>
+					<configuration>
+						<generatePof>${maven-gar-plugin.generatePof}</generatePof>
+					</configuration>					
+				</plugin>
+ 
+
+				<plugin>
+					<groupId>com.oracle.coherence</groupId>
+					<artifactId>gar-maven-plugin</artifactId>
+					<version>12.2.1-0-1</version>
+					<extensions>true</extensions>
+					<configuration>
+						<generatePof>${maven-gar-plugin.generatePof}</generatePof>
+					</configuration>					
+				</plugin>
+				
+		        <plugin>
+		          <groupId>org.apache.maven.plugins</groupId>
+		          <artifactId>maven-deploy-plugin</artifactId>
+		          <version>${telus.maven-deploy-plugin.version}</version>
+					<configuration>
+						<deployAtEnd>${deployAtEnd}</deployAtEnd>
+					</configuration>
+		        </plugin>
+
+				<!-- Added on version 1.2.0 to replan maven-antrun-plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>${exec-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>GenWsdl</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<executable>java</executable>
+						<workingDirectory>src/main/resources/wsdls</workingDirectory>
+						<arguments>
+							<argument>-jar</argument>
+							<argument>${settings.localRepository}/net/sourceforge/saxon/saxon/9.1.0.8/saxon-9.1.0.8.jar</argument>
+							<argument>${genwsdl.service.definition}</argument>
+							<argument>${genwsdl.xmlToWsdl.xslt}</argument>
+							<argument>includeWSP=${genwsdl.include.userpassword.for.basic.auth}</argument>
+							<argument>genRESTuri=${genwsdl.generate.rest.style}</argument>
+							<argument>genMasterWsdl=${genwsdl.generate.major.version.wsdl}</argument>
+						</arguments>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>net.sourceforge.saxon</groupId>
+							<artifactId>saxon</artifactId>
+							<version>9.1.0.8</version>
+							<type>jar</type>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>GenWsdl</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<tasks>
+									<property name="includeWSP"
+										value="${genwsdl.include.userpassword.for.basic.auth}" />
+
+									<delete file="src/main/resources/wsdls/${genwsdl.local.wsdl.file}" />
+
+									<echo message=" ** Include user password for basic auth=${includeWSP}" />
+
+
+									<java fork="true" dir="src/main/resources/wsdls"
+										jar="${settings.localRepository}/net/sourceforge/saxon/saxon/9.1.0.8/saxon-9.1.0.8.jar">
+										<arg value="${genwsdl.service.definition}" />
+										<arg value="${genwsdl.xmlToWsdl.xslt}" />
+										<arg
+											value="includeWSP=${genwsdl.include.userpassword.for.basic.auth}" />
+									</java>
+
+								</tasks>
+							</configuration>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>net.sourceforge.saxon</groupId>
+							<artifactId>saxon</artifactId>
+							<version>9.1.0.8</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${telus.maven-jxr-plugin.version}</version>
+					<configuration>
+						<skip>${maven.jxr.skip}</skip>
+						<aggregate>false</aggregate>
+
+						<outputDirectory>${basedir}/target/site</outputDirectory>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>emma-maven-plugin</artifactId>
+					<version>${telus.emma-maven-plugin.version}</version>
+					<inherited>true</inherited>
+					<executions>
+						<execution>
+							<phase>process-classes</phase>
+							<goals>
+								<goal>instrument</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<!-- Skip UNIT Test -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${telus.maven-surefire-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>default-test</id>
+							<phase>test</phase>
+							<goals>
+								<goal>test</goal>
+							</goals>
+							<configuration>
+								<!-- <skipTests>${surefire.plugin-skipTests}</skipTests> -->
+								<skipTests>${maven.test.skip}</skipTests>
+
+								<argLine>${surefire.plugin-argLine}</argLine>
+								<additionalClasspathElements>
+									<additionalClasspathElement>${surefire.plugin-additionalClasspathElement}</additionalClasspathElement>
+								</additionalClasspathElements>
+								<forkMode>${telus.maven-surefire-plugin.forkMode}</forkMode>
+								<reportFormat>${telus.maven-surefire-plugin.reportFormat}</reportFormat>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${telus.maven-source-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<outputDirectory>${maven-source-plugin.outputDirectory}</outputDirectory>
+						<skip>${source.skip}</skip>
+						<attach>${source.attach}</attach>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>telus-maven.plugins</groupId>
+					<artifactId>telus-config-plugin</artifactId>
+					<version>${telus.telus-config-plugin.version}</version>
+
+					<executions>
+						<execution>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>env-config</goal>
+							</goals>
+							<configuration>
+								<templateDirectory>${basedir}/envxml</templateDirectory>
+								<settingsFile>${basedir}/envxml/envSettings.xls</settingsFile>
+								<outputDirectory>${basedir}/conf</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+
+					<!-- Documentation: http://static.highsource.org/mjiip/maven-jaxb2-plugin/generate-mojo.html
+						http://java.net/projects/maven-jaxb2-plugin/pages/Home -->
+					<!-- replace -->
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>${telus.maven-jaxb2-plugin.version}</version>
+
+					<executions>
+						<execution>
+							<id>jaxb2-xsdToJava</id>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
+
+					<configuration>
+						<extension>true</extension>
+						<strict>${jaxb.strict}</strict>
+
+						<args>
+							<arg>-XtoString</arg>
+							<arg>-Xequals</arg>
+							<arg>-Xcollection-setter-injector</arg>
+
+							<!-- return the default value defined in the schema for fields that are unset in the instance -->
+							<arg>-Xdv</arg>
+
+							<!-- It would generate getter methods, instead of the default 'is' method -->
+							<!-- <arg>-Xbg</arg> -->
+							<arg>-XhashCode</arg>
+							<arg>-Xcopyable</arg>
+						</args>
+
+
+						<generateDirectory>${project.build.directory}/classes</generateDirectory>
+
+						<removeOldOutput>${jaxb.removeOldOutput}</removeOldOutput>
+						<verbose>${jaxb.verbose}</verbose>
+						<debug>${jaxb.debug}</debug>
+
+						<schemaDirectory>${jaxb.schemaDirectory}</schemaDirectory>
+
+						<schemaIncludes>
+							<schemaInclude>${jaxb.schemaInclude}</schemaInclude>
+						</schemaIncludes>
+						<schemaExcludes>
+							<schemaExclude>${jaxb.schemaExclude}</schemaExclude>
+						</schemaExcludes>
+
+						<bindingIncludes>
+							<bindingInclude>${jaxb.bindingInclude}</bindingInclude>
+						</bindingIncludes>
+
+						<bindingExcludes>
+							<bindingExclude>${jaxb.bindingExclude}</bindingExclude>
+						</bindingExcludes>
+
+						<plugins>
+							<plugin>
+								<!-- http://cxf.apache.org/cxf-xjc-dv.html CXF XJC Default Value Plugin -->
+								<groupId>org.apache.cxf.xjcplugins</groupId>
+								<artifactId>cxf-xjc-dv</artifactId>
+								<version>${telus.cxf-xjc-dv-plugin.version}</version>
+							</plugin>
+							<plugin>
+								<groupId>org.apache.cxf.xjcplugins</groupId>
+								<artifactId>cxf-xjc-boolean</artifactId>
+								<version>${telus.cxf-xjc-boolean-plugin.version}</version>
+							</plugin>
+						</plugins>
+
+					</configuration>
+					<dependencies>
+						<!-- change the boolean getter methods from "isFoo()" to "getFoo() -->
+						<dependency>
+							<groupId>net.java.dev.vcc.thirdparty</groupId>
+							<artifactId>collection-setter-injector</artifactId>
+							<version>${telus.collection-setter-injector.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>telus-maven.plugins-support</groupId>
+							<artifactId>telus-core</artifactId>
+							<version>${telus.core-plugins-support.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics</artifactId>
+							<version>${telus.jaxb2-basics.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>com.sun.xml.bind</groupId>
+							<artifactId>jaxb-xjc</artifactId>
+							<version>${telus.jaxb-xjc.version}</version>
+						</dependency>
+
+
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-toolchains-plugin</artifactId>
+					<version>1.0</version>
+					<executions>
+						<execution>
+							<phase>validate</phase>
+							<goals>
+								<goal>toolchain</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<toolchains>
+							<jdk>
+								<version>${telus.javac.target}</version>
+								<!-- vendor>sun</vendor -->
+							</jdk>
+						</toolchains>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${telus.maven-javadoc-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>resource-bundles</id>
+							<phase>package</phase>
+							<goals>
+								<!-- produce source artifact for main project sources -->
+								<goal>resource-bundle</goal>
+
+								<!-- produce source artifact for project test sources -->
+								<goal>test-resource-bundle</goal>
+							</goals>
+							<configuration>
+								<detectJavaApiLink>true</detectJavaApiLink>
+								<detectOfflineLinks>true</detectOfflineLinks>
+							</configuration>
+						</execution>
+						<execution>
+							<goals>
+								<goal>javadoc</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<!-- Specific configuration for the given reports -->
+							</configuration>
+						</execution>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<source>${telus.javac.source}</source>
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<aggregate>true</aggregate>
+						<skip>${maven.javadoc.skip}</skip>
+						<maxmemory>1g</maxmemory>
+						<links>
+
+							<link>http://go/fast/</link>
+
+						</links>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${telus.maven-site-plugin.version}</version>
+					<configuration>
+						<skip>${maven.site.skip}</skip>
+					</configuration>
+					<dependencies>
+                        <!-- careful with upgrades, asciidoctor does not work with 3.4 yet -->
+						<dependency>
+							<groupId>org.asciidoctor</groupId>
+							<artifactId>asciidoctor-maven-plugin</artifactId>
+							<version>1.5.0</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-webdav-jackrabbit</artifactId>
+							<version>2.6</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!-- Delete Additional Files Not Exposed to Maven See: http://maven.apache.org/plugins/maven-clean-plugin/
+					Notes: over-rides Maven default directory structure based on the filesets
+					configuration -->
+
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${telus.maven-clean-plugin.version}</version>
+
+					<configuration>
+						<verbose>${clean.verbose}</verbose>
+						<failOnError>false</failOnError>
+						<filesets>
+							<fileset>
+								<directory>${basedir}/lib/</directory>
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+							<fileset>
+								<directory>${basedir}/src/main/generated-sources/com</directory>
+
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+							<fileset>
+								<directory>${basedir}/src/main/generated-sources/net</directory>
+
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+							<fileset>
+								<directory>${basedir}/src/main/generated-sources/org</directory>
+
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+							<fileset>
+								<directory>${basedir}/src/main/impl</directory>
+
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+							<fileset>
+								<directory>${maven-source-plugin.outputDirectory}</directory>
+
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+							<fileset>
+								<directory>${basedir}/conf</directory>
+
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+						</filesets>
+					</configuration>
+				</plugin>
+
+				<!-- copy resources which are not in the default maven layout -->
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${telus.maven-resources-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>copy-resources</id>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<phase>compile</phase>
+
+							<configuration>
+								<outputDirectory>${basedir}/target/classes</outputDirectory>
+								<encoding>${UTF-8.encoding}</encoding>
+								<resources>
+									<resource>
+										<directory>${basedir}/src/main/generated-sources</directory>
+										<!--
+										<includes>
+											<include>**/*.java</include>
+										</includes>
+										-->
+										<filtering>true</filtering>
+										<excludes>
+											<exclude>.copyarea.db</exclude>
+										</excludes>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Remove from version 1.5.0 <plugin> <groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId> <version>${telus.maven-eclipse-plugin.version}</version>
+					<configuration> <downloadSources>true</downloadSources> </configuration>
+					</plugin> -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${telus.maven-jar-plugin.version}</version>
+					<configuration>
+  				
+						<excludes>
+						    <!-- This stops developer to include jars in the lib folder -->
+                            <exclude>lib/**/**.*</exclude>
+							<exclude>**/.copyarea.db</exclude>
+							<exclude>**/**.keep</exclude>
+                            <exclude>**/**.bak</exclude>							
+							<!--
+                            
+                            <exclude>resources/**/**.*</exclude>
+
+                            <exclude>src/main/java/**/**.java</exclude>
+                            <exclude>logs/**/**.*</exclude>
+                            <exclude>test/**/**.*</exclude>
+                            <exclude>**/.copyarea.db</exclude>
+                            <exclude>**/**.keep*</exclude>
+                            <exclude>xdocs/**/*.*</exclude>
+							-->
+						</excludes>
+
+
+						<!-- Place the Manifest with build number on the jar -->
+
+						<archive>
+							<manifest>
+								<addExtensions>false</addExtensions>
+								<addClasspath>false</addClasspath>
+								<addDefaultImplementationEntries>false</addDefaultImplementationEntries>
+							</manifest>
+							<!-- version 1.5.0 Remove as this cannot work in the East <manifestEntries>
+								<Weblogic-Application-Version>$label</Weblogic-Application-Version> </manifestEntries> -->
+							<index>true</index>
+						</archive>
+						<classifier>${classifier}</classifier>
+					</configuration>
+				</plugin>
+
+
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${telus.maven-war-plugin.version}</version>
+					<configuration>
+						<!-- warSourceDirectory>src/main/webapp</warSourceDirectory -->
+
+						<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+
+						<warSourceExcludes>**/**.keep*, **/.copyarea.db</warSourceExcludes>
+						<!-- version 1.5.0 Remove as this cannot work in the East
+						<archive>
+							<manifestEntries>
+								<Weblogic-Application-Version>$label</Weblogic-Application-Version>
+							</manifestEntries>
+						</archive>
+						-->
+					</configuration>
+				</plugin>
+
+
+				<!-- plugin for creating an ear artifact Notes: - utilizes buildNumber
+					plugin to add the version number in the manifest - when generating ear for
+					a service the ${service.groupId} and ${service.artifactId} should be specified
+					in the <configuration> section of the module. -->
+
+				<plugin>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>${telus.maven-ear-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>default-ear</id>
+							<phase>package</phase>
+							<goals>
+								<goal>ear</goal>
+							</goals>
+							<configuration>
+
+								<generateApplicationXml>false</generateApplicationXml>
+								<!-- version 1.5.0 Remove as this cannot work in the East <archive>
+									<manifestEntries> <Weblogic-Application-Version>$label</Weblogic-Application-Version>
+									</manifestEntries> </archive> -->
+							</configuration>
+						</execution>
+
+					</executions>
+
+					<configuration>
+						<version>5</version>
+						<defaultLibBundleDir>APP-INF/lib</defaultLibBundleDir>
+						<earSourceDirectory>src/main/application</earSourceDirectory>
+						<earSourceIncludes>APP-INF/**/*.*,META-INF/**/*.*</earSourceIncludes>
+						<earSourceExcludes>**/.copyarea.db,**/**.keep*</earSourceExcludes>
+						<generateApplicationXml>false</generateApplicationXml>
+
+					</configuration>
+
+				</plugin>
+
+				<!-- for generating an service jar and corresponding client jar - this
+					needs additional configuration on the service POM to specify what classes
+					to include/exclude from the client jar. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>${telus.maven-ejb-plugin.version}</version>
+					<configuration>
+						<generateClient>${telus.generateEjbClient}</generateClient>
+						<ejbVersion>${telus.ejbVersion.version}</ejbVersion>
+						<clientExcludes>
+							<clientExclude>**/util/**/*.class</clientExclude>
+							<clientExclude>**/adapter/**/*.class</clientExclude>
+							<clientExclude>**/*Ejb.class</clientExclude>
+							<clientExclude>**/*Mdb.class</clientExclude>
+							<clientExclude>**/.copyarea.db</clientExclude>
+							<clientExclude>**/*.xml</clientExclude>
+							<clientExclude>**/*.properties</clientExclude>
+							<clientExclude>**/*.txt</clientExclude>
+							<clientExclude>**/*.sig</clientExclude>
+							<clientExclude>**/**.keep*</clientExclude>
+						</clientExcludes>
+
+					</configuration>
+				</plugin>
+
+				<!-- Create a graph of plug-ins used -->
+				<plugin>
+					<groupId>com.googlecode.maven-overview-plugin</groupId>
+					<artifactId>maven-overview-plugin</artifactId>
+					<version>${telus.maven-overview-plugin.version}</version>
+				</plugin>
+
+
+				<!-- This will copy the current app batch jars to lib folder if you configure
+					<skip>false</skip> If you need more non-common jars, configure more <artifactItem> -->
+				<!-- 10/12/2012 <plugin> <groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId> <version>${telus.maven-dependency-plugin.version}</version>
+					<executions> <execution> <id>copy-batchlib</id> <phase>install</phase> <goals>
+					<goal>copy</goal> </goals> <configuration> <skip>true</skip> <artifactItems>
+					<artifactItem> <groupId>${project.groupId}</groupId> <artifactId>${project.artifactId}</artifactId>
+					<version>${project.version}</version> <type>jar</type> <overWrite>true</overWrite>
+					<outputDirectory>${basedir}/lib</outputDirectory> </artifactItem> </artifactItems>
+					<localRepositoryDirectory>${project.build.directory}</localRepositoryDirectory>
+					<overWriteReleases>false</overWriteReleases> <overWriteSnapshots>true</overWriteSnapshots>
+					</configuration> </execution> </executions> </plugin> -->
+
+
+				<!-- Need this so it will compile the java classes under generated-sources -->
+				<!-- Use this in the services-client folder -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${telus.build-helper-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>add-source</goal>
+							</goals>
+							<configuration>
+								<sources>
+									<source>${basedir}/src/main/generated-sources</source>
+								</sources>
+							</configuration>
+						</execution>
+
+					</executions>
+				</plugin>
+
+
+				<!-- Added BuildLiblistMojo.java to build the libList.txt for batch module.
+					It is originally copy from BuildClasspathMojo.java from maven-dependency-plugin
+					Configure <excludeArtifactIds> to exclude non-common jars -->
+
+
+				<plugin>
+					<groupId>org.jvnet.jax-ws-commons</groupId>
+					<artifactId>jaxws-maven-plugin</artifactId>
+					<version>${telus.jaxws-maven-plugin.version}</version>
+
+					<executions>
+						<execution>
+							<id>GenService</id>
+							<phase>process-resources</phase>
+
+							<goals>
+								<goal>wsimport</goal>
+							</goals>
+							<configuration>
+								<genJWS>true</genJWS>
+
+								<!-- Added this for version 1.0.7 -->
+								<xjcArgs>
+									<xjcArg>-Xcollection-setter-injector</xjcArg>
+									<xjcArg>-XtoString</xjcArg>
+									<xjcArg>-Xequals</xjcArg>
+
+									<!-- to use the booleanGetter -->
+									<!-- <xjcArg>-Xbg</xjcArg> -->
+								</xjcArgs>
+
+
+							</configuration>
+							<!-- JAX-WS Maven plugin parameters: http://jax-ws-commons.java.net/jaxws-maven-plugin/wsimport-mojo.html -->
+							<!-- Example: <configuration> <target>2.1</target> <wsdlDirectory>src/main/resources/wsdls</wsdlDirectory>
+								<wsdlFiles> <wsdlFile>a.wsdl</wsdlFile> <wsdlFile>b/b.wsdl</wsdlFile> <wsdlFile>${basedir}/src/main/resources/wsdls/c.wsdl</wsdlFile>
+								</wsdlFiles> <wsdlLocation>http://example.com/mywebservices/*</wsdlLocation>
+								</configuration> -->
+
+						</execution>
+					</executions>
+
+					<dependencies>
+						<!-- put xjc-plugins on the jaxws-maven-plugin's classpath -->
+						<dependency>
+							<groupId>org.apache.cxf.xjcplugins</groupId>
+							<artifactId>cxf-xjc-boolean</artifactId>
+							<version>${telus.cxf-xjc-boolean-plugin.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics</artifactId>
+							<version>${telus.jaxb2-basics.version}</version>
+						</dependency>
+
+						<dependency>
+							<groupId>net.java.dev.vcc.thirdparty</groupId>
+							<artifactId>collection-setter-injector</artifactId>
+							<version>${telus.collection-setter-injector.version}</version>
+						</dependency>
+
+						<dependency>
+							<groupId>telus-maven.plugins-support</groupId>
+							<artifactId>telus-core</artifactId>
+							<version>${telus.core-plugins-support.version}</version>
+						</dependency>
+
+
+						<!-- Require for wsimport -->
+						<dependency>
+							<groupId>com.sun.xml.ws</groupId>
+							<artifactId>jaxws-rt</artifactId>
+							<version>${telus.jaxws-rt.version}</version>
+						</dependency>
+						<dependency>
+							<!-- To generate sources with JAXB which is used during wsimport -->
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics-runtime</artifactId>
+							<version>${telus.jaxb2-basics-runtime.version}</version>
+						</dependency>
+
+					</dependencies>
+
+					<configuration>
+
+						<wsdlDirectory>${basedir}/src/main/resources/wsdls</wsdlDirectory>
+
+						<!-- Disable the SSL Hostname verification while fetching WSDL(s). -->
+						<xdisableSSLHostnameVerification>true</xdisableSSLHostnameVerification>
+
+						<!-- Turn off compilation after code generation and let generated sources
+							be compiled by maven during compilation phase; -->
+						<xnocompile>true</xnocompile>
+
+						<!-- Specify where to place generated source files, keep is turned
+							on with this option. ws implementation class is not generated if -s and -d
+							options differ destDir (-d) must be equal to sourceDestDir (-s) http://java.net/jira/browse/JAX_WS-1039 -->
+						<destDir>${basedir}/src/main/generated-sources</destDir>
+						<sourceDestDir>${basedir}/src/main/generated-sources</sourceDestDir>
+
+						<xdebug>true</xdebug>
+						<verbose>${jaxws-maven-plugin.verbose}</verbose>
+						<target>2.2</target>
+						<extension>true</extension>
+						<!-- Must be remove as it takes longer to build with this parameter
+						<httpproxy>proxy:8080</httpproxy>
+						-->
+						<httpproxy>::</httpproxy>
+						<!-- Specify where to generate JWS implementation file. -->
+						<implDestDir>${basedir}/src/main/impl</implDestDir>
+
+						<!-- tell JAXB to actually use xjc-plugins -->
+
+						<xjcArgs>
+							<xjcArg>-Xcollection-setter-injector</xjcArg>
+						</xjcArgs>
+
+						<!-- http://docs.oracle.com/cd/E17802_01/webservices/webservices/docs/1.5/tutorial/doc/JAXBUsing4.html -->
+						<bindingDirectory>${basedir}/src/main/resources/wsdls</bindingDirectory>
+
+
+					</configuration>
+				</plugin>
+
+				<!-- http://jax-ws-commons.java.net/jaxws-maven-plugin/examples/using-jaxws22-on-jdk6.html -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${telus.maven-dependency-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>${maven-dependency-plugin.phase}</phase>
+							<goals>
+								<goal>copy</goal>
+							</goals>
+							<configuration>
+								<skip>${mdep.skip}</skip>
+								<artifactItems>
+									<artifactItem>
+										<groupId>${project.groupId}</groupId>
+										<artifactId>${project.artifactId}</artifactId>
+										<version>${project.version}</version>
+										<type>jar</type>
+										<overWrite>true</overWrite>
+										<outputDirectory>${maven-dependency-plugin.outputDirectory}</outputDirectory>
+									</artifactItem>
+								</artifactItems>
+
+								<overWriteReleases>true</overWriteReleases>
+								<overWriteSnapshots>true</overWriteSnapshots>
+							</configuration>
+						</execution>
+						<execution>
+							<id>createEndosedDir</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>copy</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${telus.endorsed.dir}</outputDirectory>
+								<silent>true</silent>
+								<!-- need JAXB API and JAX-WS API in an endorsed dir -->
+								<artifactItems>
+									<artifactItem>
+										<groupId>javax.xml.bind</groupId>
+										<artifactId>jaxb-api</artifactId>
+										<version>${telus.jaxb-api.version}</version>
+										<type>jar</type>
+									</artifactItem>
+									<artifactItem>
+										<groupId>javax.xml.ws</groupId>
+										<artifactId>jaxws-api</artifactId>
+										<version>${telus.jaxws-api.version}</version>
+										<type>jar</type>
+									</artifactItem>
+								</artifactItems>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${telus.maven-compiler-plugin.version}</version>
+					<configuration>
+						<fork>true</fork>
+						<debug>true</debug>
+						<optimize>true</optimize>
+						<showDeprecation>true</showDeprecation>
+						<showWarnings>true</showWarnings>
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<!-- executable>${java.home}/../bin/javac</executable -->
+						<source>${telus.javac.source}</source>
+						<target>${telus.javac.target}</target>
+						<compilerVersion>${telus.javac.target}</compilerVersion>
+						<!-- <compilerArgument> ${telus.javac.xlint} </compilerArgument> -->
+						<compilerArguments>
+							<!-- tell compiler to use endorsed dir -->
+							<endorseddirs>${telus.endorsed.dir}</endorseddirs>
+
+						</compilerArguments>
+
+					</configuration>
+
+				</plugin>
+
+				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId>
+					<version>${telus.maven-compiler-plugin.version}</version> <executions> <execution>
+					<id>compileWs</id> </execution> </executions> <configuration> <source>${telus.javac.source}</source>
+					<target>${telus.javac.target}</target> <compilerArguments> -->
+				<!-- tell compiler to use endorsed dir -->
+				<!-- <endorseddirs>${telus.endorsed.dir}</endorseddirs> </compilerArguments>
+					</configuration> </plugin> -->
+
+				<!--This plugin's configuration is used to store Eclipse m2e settings
+					only. It has no influence on the Maven build itself. -->
+
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>${telus.eclipse.m2e.version}</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-toolchains-plugin</artifactId>
+										<versionRange>1.0</versionRange>
+										<goals>
+											<goal>toolchain</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>build-helper-maven-plugin</artifactId>
+										<versionRange>[1.7,)</versionRange>
+										<goals>
+											<goal>add-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.jvnet.jax-ws-commons</groupId>
+										<artifactId>jaxws-maven-plugin</artifactId>
+										<versionRange>[2.2,)</versionRange>
+										<goals>
+											<goal>wsimport</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.google.code.maven-replacer-plugin</groupId>
+										<artifactId>replacer</artifactId>
+										<versionRange>[1.5.2,)</versionRange>
+										<goals>
+											<goal>replace</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>telus-maven.plugins</groupId>
+										<artifactId>telus-config-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>env-config</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.5.1,)</versionRange>
+										<goals>
+											<goal>copy</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-enforcer-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>enforce</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+
+				<!-- 2013-09-10 Retire after version 1.2.5. Please use the maven-jaxb2-plugin -->
+				<!-- <plugin> <groupId>org.apache.cxf</groupId> <artifactId>cxf-xjc-plugin</artifactId>
+					<version>${telus.cxf-xjc-plugin.version}</version> </plugin> -->
+
+
+				<!-- Use by Wireless - Sergey Rodovinsky -->
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>aspectj-maven-plugin</artifactId>
+					<version>${telus.aspectj-maven-plugin.version}</version>
+					<configuration>
+						<complianceLevel>1.6</complianceLevel>
+						<encoding>${UTF-8.encoding}</encoding>
+						<aspectLibraries>
+							<aspectLibrary>
+								<groupId>org.springframework</groupId>
+								<artifactId>spring-aspects</artifactId>
+							</aspectLibrary>
+						</aspectLibraries>
+						<Xlint>warning</Xlint>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>test-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${telus.maven-install-plugin.version}</version>
+				</plugin>
+
+			</plugins>
+
+		</pluginManagement>
+
+	</build>
+
+	<reporting>
+		<plugins>
+			<!-- STOP generating this reports -->
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>versions-maven-plugin</artifactId>
+				<version>${telus.versions-maven-plugin.version}</version> <reportSets> <reportSet>
+				<reports> <report>dependency-updates-report</report> <report>plugin-updates-report</report>
+				<report>property-updates-report</report> </reports> </reportSet> </reportSets>
+				</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${telus.maven-javadoc-plugin.version}</version>
+				<configuration>
+					<detectJavaApiLink>true</detectJavaApiLink>
+					<detectOfflineLinks>true</detectOfflineLinks>
+					<linkJavadoc>true</linkJavadoc>
+					<linksource>true</linksource>
+					<!-- so javadoc works with JDK 1.8
+					http://stackoverflow.com/questions/15886209/maven-is-not-working-in-java-8-when-javadoc-tags-are-incomplete -->
+				</configuration>
+				<reportSets>
+					<reportSet><!-- by default, id = "default" -->
+
+						<reports><!-- select non-aggregate reports -->
+							<report>javadoc</report>
+							<!-- <report>aggregate-jar</report> -->
+						</reports>
+					</reportSet>
+
+				</reportSets>
+
+			</plugin>
+<!--
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>index</report>
+							<report>dependencies</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>index</report>
+							<report>cim</report>
+							<report>dependencies</report>
+							<!-- <report>dependency-convergence</report> -->
+							<report>dependency-info</report>
+							<report>dependency-management</report>
+							<report>distribution-management</report>
+							<!-- <report>index</report> -->
+							<!-- <report>issue-tracking</report> -->
+							<report>license</report>
+							<!-- <report>mailing-list</report> -->
+							<!-- <report>modules</report> -->
+							<!-- <report>plugin-management</report> -->
+							<report>plugins</report>
+							<report>project-team</report>
+							<report>scm</report>
+							<report>summary</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${telus.maven-jxr-plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<id>src-xref</id>
+						<reports>
+							<report>jxr</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<version>${telus.maven-changes-plugin.version}</version>
+				<configuration>
+					<xmlPath>${basedir}/xdocs/changes.xml</xmlPath>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>			
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>			
+<!--
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-jxr-plugin</artifactId>
+			</plugin>
+			 <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-deploy-plugin</artifactId>
+				<version>${telus.maven-deploy-plugin.version}</version> <configuration> <skip>true</skip>
+				</configuration> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId> <version>${telus.maven-install-plugin.version}</version>
+				</plugin> -->
+		</plugins>
+	</reporting>
+
+
+
+</project>

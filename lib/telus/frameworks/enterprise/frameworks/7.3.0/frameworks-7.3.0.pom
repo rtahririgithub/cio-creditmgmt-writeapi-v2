@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<parent>
+		<groupId>telus-maven.plugin-management</groupId>
+		<artifactId>telus-base-build</artifactId>
+		<version>1.4.6</version>
+
+	</parent>
+
+	<!-- mvn versions:update-parent mvn versions:update-child-modules -->
+
+	<groupId>telus.frameworks.enterprise</groupId>
+	<!-- ent-fw-source -->
+	<artifactId>frameworks</artifactId>
+	<packaging>pom</packaging>
+	<version>7.3.0</version>
+	<name>${project.artifactId} ${project.version}</name>
+
+	<description>Frameworks Application pom</description>
+
+	<properties>
+		<amdocs.shared.version>9.1.24.28.1</amdocs.shared.version>
+		<fw.version>7.3.0</fw.version>
+		<deployAtEnd>false</deployAtEnd>
+		<spring.version>3.2.9.RELEASE</spring.version>
+		<maven.jxr.skip>true</maven.jxr.skip>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
+		<source.skip>true</source.skip>
+		<source.attach>false</source.attach>
+		<stagingDirectory>C:/GIT-pr/Frameworks-ent-frameworks/frameworks/staging/pom-frameworks-share</stagingDirectory>
+		<maven.site.skip>true</maven.site.skip>
+		<maven.resources.overwrite>true</maven.resources.overwrite>
+
+		<maven-source-plugin.outputDirectory>${project.build.directory}</maven-source-plugin.outputDirectory>
+		<!-- <maven-source-plugin.outputDirectory>C:\GIT-pr\Frameworks-ent-frameworks\frameworks\fw-all\zips</maven-source-plugin.outputDirectory> -->
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>doclint-java8-disable</id>
+			<activation>
+				<jdk>[1.8,)</jdk>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<configuration>
+							<additionalparam>-Xdoclint:none</additionalparam>
+						</configuration>
+
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-site-plugin</artifactId>
+						<version>3.3</version>
+						<configuration>
+							<reportPlugins>
+								<plugin>
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-javadoc-plugin</artifactId>
+									<configuration>
+										<additionalparam>-Xdoclint:none</additionalparam>
+									</configuration>
+								</plugin>
+							</reportPlugins>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<distributionManagement>
+		<site>
+			<id>telus-mavenrepository</id>
+			<url>dav:http://mavenrepository.tsl.telus.com/nexus/content/sites/telus-documentation/telus/frameworks/enterprise/${project.version}/pom-frameworks-share</url>
+		</site>
+	</distributionManagement>
+
+	<dependencyManagement>
+		<!-- This section defines the acceptable versions for a project. This configuration 
+			does not result in a JAR being downloaded and included in the project. On 
+			the other hand, this allows author to directive specify which version of 
+			a dependency should be used for transitive dependencies or dependencies where 
+			version number has not been specified. This is a simple way to force Maven 
+			to select a specific dependency version. In the case of an aggregate project 
+			it is best to add this to the aggregate pom. Configure the dependency versions 
+			in one place for all of the modules. -->
+		<dependencies>
+			<!-- Start of Frameworks JAR Files -->
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-logging-log4j1</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-logging-log4j2</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-batch</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-mail</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-crypto</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-webcontroller</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-weblogic</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-asyncprocessor</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-asyncerrorhandler</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-recordparser</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-recordparser2</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-legacy</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-legacyaccess</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-messagingproxy</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-documentum</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-sftxtool</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-error</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-principal</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-webservices</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+				<artifactId>frameworks-xmlstore</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- Use by Frameworks-webservices -->
+
+			<dependency>
+				<groupId>telus.soa</groupId>
+				<artifactId>soa-uddi-inquiry-v3-ws-client</artifactId>
+				<scope>provided</scope>
+				<version>1.0.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-deploy</groupId>
+				<version>${fw.version}</version>
+				<artifactId>fw-audit-services</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-deploy</groupId>
+				<version>${fw.version}</version>
+				<artifactId>fw-errorlogging-services</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-deploy</groupId>
+				<version>${fw.version}</version>
+				<artifactId>fw-mail-services</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>telus.frameworks.enterprise.frameworks-deploy</groupId>
+				<version>${fw.version}</version>
+				<artifactId>fw-performance-services</artifactId>
+			</dependency>
+
+			<!-- End of Frameworks JAR Files -->
+			<!-- common jars -->
+
+			<dependency>
+				<!-- To generate sources with JAXB which is used during wsimport -->
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>${telus.jaxb2-basics-runtime.version}</version>
+			</dependency>
+			<!-- This is only required when you use the CoherenceCacheAdapter (part 
+				of core framework) -->
+			<dependency>
+				<groupId>com.oracle.coherence</groupId>
+				<artifactId>coherence</artifactId>
+				<version>12.1.2-0-4</version>
+			</dependency>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>6.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>1.4.5</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.ejb</groupId>
+				<artifactId>ejb-api</artifactId>
+				<version>3.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.1</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.jms</groupId>
+				<artifactId>jms-api</artifactId>
+				<version>1.1-rev-1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- This has been retired since 3.2.3-RELEASE <dependency> <groupId>org.springframework</groupId> 
+				<artifactId>spring-asm</artifactId> <version>${spring.version}</version> 
+				</dependency> -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-instrument</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-instrument-tomcat</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-oxm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-struts</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-web-servlet</artifactId> 
+				<version>${spring.version}</version> </dependency> -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc-struts</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- required by AMDOCS -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- Required by REST WS. E.g. Bolton -->
+			<dependency>
+				<groupId>org.springframework.ws</groupId>
+				<artifactId>spring-xml</artifactId>
+				<version>2.1.3.RELEASE</version>
+			</dependency>
+			<!-- needed for spring aop -->
+		 
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>1.8.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.8.4</version>
+			</dependency>
+			<!--   
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjtools</artifactId>
+				<version>1.8.4</version>
+			</dependency>
+		     -->
+			<!-- 
+			<dependency> 
+			     <groupId>commons-httpclient</groupId> 
+			     <artifactId>commons-httpclient</artifactId> 
+				<version>3.1</version> 
+			</dependency> -->
+			<!-- 	
+              
+			<dependency>
+				<groupId>oro</groupId>
+				<artifactId>oro</artifactId>
+				<version>2.0.8</version>
+			</dependency>
+            -->
+
+			<dependency>
+				<groupId>axis</groupId>
+				<artifactId>axis</artifactId>
+				<version>1.4</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- 
+			<dependency> 
+			    <groupId>axis</groupId> 
+			    <artifactId>-jaxrpc</artifactId> 
+		        <version>1.4</version> 
+				<scope>provided</scope> 
+			</dependency> 
+			<dependency> 
+				<groupId></groupId> 
+				<artifactId>-saaj</artifactId> 
+				<version>1.2</version> 
+				<scope>provided</scope> 
+			</dependency>
+			-->
+			<!-- upgrade form 3.1 to 3.4 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>1.6</version>
+			</dependency>
+
+			<dependency>
+				<groupId>bsf</groupId>
+				<artifactId>bsf</artifactId>
+				<version>2.4.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>rhino</groupId>
+				<artifactId>js</artifactId>
+				<version>1.7R2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.castor</groupId>
+				<artifactId>castor-xml</artifactId>
+				<version>1.1.2.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-chain</groupId>
+				<artifactId>commons-chain</artifactId>
+				<version>1.2</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>jdom</groupId>
+				<artifactId>jdom</artifactId>
+				<version>1.0</version>
+			</dependency>
+
+			<!-- log4j 2 start -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
+
+			<!-- log4j-2.9.0+ is not compatible with weblogic 12c class loader -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.11.0-TELUS</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>2.11.0-TELUS</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-jcl</artifactId>
+				<version>2.11.0-TELUS</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-web</artifactId>
+				<version>2.11.0-TELUS</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>2.5</version>  <!-- pending upload of 2.11.0-TELUS -->
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.12</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.7.12</version>
+			</dependency>
+			<!-- log4j 2 end -->
+
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2</version>
+				<scope>compile</scope>
+				<exclusions>
+					<!-- declare the exclusion here -->
+					<exclusion>
+						<groupId>logkit</groupId>
+						<artifactId>logkit</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.servlet</groupId>
+						<artifactId>servlet-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>avalon-framework</groupId>
+						<artifactId>avalon-framework</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- log4j 2 end -->
+
+			<!-- fw6 1.3 - upgrade to 2.7.1 -->
+			<dependency>
+				<groupId>xalan</groupId>
+				<artifactId>xalan</artifactId>
+				<version>2.7.2</version>
+			</dependency>
+			<!-- 
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-all</artifactId>
+				<version>1.7</version>
+			</dependency>
+			-->
+	        <dependency>
+	            <groupId>org.apache.xmlgraphics</groupId>
+	            <artifactId>batik-css</artifactId>
+	            <version>1.8</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.apache.xmlgraphics</groupId>
+	            <artifactId>batik-ext</artifactId>
+	            <version>1.8</version>
+	        </dependency>
+			
+			<dependency>
+				<groupId>xalan</groupId>
+				<artifactId>serializer</artifactId>
+				<version>2.7.2</version>
+			</dependency>
+			<!-- Upgrade from 13.04 -->
+			<!-- Transient dependency <dependency> <groupId>xml-apis</groupId> <artifactId>xml-apis</artifactId> 
+				<version>1.4.01</version> </dependency> -->
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.10</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>commons-discovery</groupId>
+				<artifactId>commons-discovery</artifactId>
+				<version>0.5</version>
+			</dependency>
+			<dependency> 
+			     <groupId>commons-fileupload</groupId> 
+			     <artifactId>commons-fileupload</artifactId> 
+				    <version>1.3.2</version> </dependency>
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>1.1.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-2.3.5</artifactId>
+				<version>2.3.5</version>
+			</dependency>
+
+			<!-- Application can override this if needed new features -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.2.7</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>telus.org.mybatis</groupId>
+				<artifactId>mybatis-spring-patch</artifactId>
+				<version>1.2.0</version>
+			</dependency>
+			<!-- <dependency> <groupId>javax</groupId> <artifactId>booleangetter</artifactId> 
+				<version>1.0</version> </dependency> -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>4.3.0.Final</version>
+			</dependency>
+
+			<dependency>
+				<groupId>telus-maven.plugins-support</groupId>
+				<artifactId>telus-core</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-validator</groupId>
+				<artifactId>commons-validator</artifactId>
+				<version>1.5.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>2.6.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- retired by log4j 2 -->
+			<!--dependency> <groupId>slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
+				<version>1.5.6</version> </dependency> <dependency> <groupId>org.slf4j</groupId> 
+				<artifactId>slf4j-log4j12</artifactId> <version>1.5.6</version> </dependency -->
+			<!-- retired by log4j 2 -->
+
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.9.9</version>  <!-- upgraded for timezone America/Creston -->
+			</dependency>
+
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>1.0.0.GA</version>
+			</dependency>
+			 <dependency> 
+			    <groupId>xerces</groupId> 
+			    <artifactId>xercesImpl</artifactId> 
+				<version>2.11.0</version> 
+				<scope>test</scope> 
+			</dependency>  
+			<!-- Transient dependency of xercesImpl -->
+			<!-- 
+			<dependency> 
+			    <groupId>xml-apis</groupId> 
+			    <artifactId>xml-apis</artifactId> 
+				<version>1.4.01</version> 
+			</dependency> 
+			-->
+	        
+	        <!--  struts-core transient dependency -->
+			<!--   
+			<dependency>
+				<groupId>antlr</groupId>
+				<artifactId>antlr</artifactId>
+				<version>2.7.7</version>
+			</dependency>
+			
+			-->
+			<!-- added 2010-03-02 for SOA Use in frameworks-webservices <dependency> 
+				<groupId>soa</groupId> <artifactId>soa-framework-client-wls92</artifactId> 
+				<version>5.2</version> <scope>provided</scope> </dependency> -->
+
+			<dependency>
+				<groupId>org.apache.ant</groupId>
+				<artifactId>ant</artifactId>
+				<version>1.8.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.ant</groupId>
+				<artifactId>ant-launcher</artifactId>
+				<version>1.8.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>safenet</groupId>
+				<artifactId>LunaJCASP</artifactId>
+				<version>1.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>safenet</groupId>
+				<artifactId>LunaJCESP</artifactId>
+				<version>1.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>documentum</groupId>
+				<artifactId>dmcmspi</artifactId>
+				<version>4.0</version>
+                <scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>documentum</groupId>
+				<artifactId>dfc</artifactId>
+				<version>5.3</version>
+                <scope>provided</scope>
+			</dependency>
+			<!-- <dependency> <groupId>javax.activation</groupId> <artifactId>activation</artifactId> 
+				<version>1.1.1</version> </dependency> -->
+			<!-- Required by messagingproxy-server -->
+			<dependency>
+				<groupId>wsdl4j</groupId>
+				<artifactId>wsdl4j</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+
+			<!-- used by frameworks6-xmlstore -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-asl</artifactId>
+				<version>1.9.13</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>1.9.13</version>
+			</dependency>
+<!-- 
+			<dependency>
+				<groupId>commons-jxpath</groupId>
+				<artifactId>commons-jxpath</artifactId>
+				<version>1.3</version>
+			</dependency>
+-->
+			<dependency>
+				<groupId>net.sourceforge.stripes</groupId>
+				<artifactId>stripes</artifactId>
+				<version>1.5.7</version>
+			</dependency>
+ 		
+			<!-- <dependency> <groupId>net.sourceforge.stripes</groupId> <artifactId>stripesstuff</artifactId> 
+				<version>0.1</version> </dependency> -->
+
+			<!-- UAMS -->
+			<dependency>
+				<groupId>amdocs</groupId>
+				<artifactId>amdocs_uams</artifactId>
+				<version>6.13.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>telus.amdocs</groupId>
+				<artifactId>amdocs_xps_client_kit</artifactId>
+				<version>${amdocs.shared.version}</version>
+			</dependency>
+			<!-- Not used <dependency> <groupId>amdocs</groupId> <artifactId>config</artifactId> 
+				<version>5.0.2</version> <scope>provided</scope> </dependency> -->
+			<!-- TransactionalResourceEmulator -->
+			<!-- <dependency> <groupId>stax</groupId> <artifactId>sjsxp</artifactId> 
+				<version>1.6</version> </dependency> <dependency> <groupId>stax</groupId> 
+				<artifactId>jsr173_api</artifactId> <version>1.0</version> </dependency> -->
+			<!--
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>com.springsource.org.junit</artifactId>
+				<version>4.7.0</version>
+				<scope>test</scope>
+			</dependency>
+			-->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- <dependency> <groupId>backport-util-concurrent</groupId> <artifactId>backport-util-concurrent</artifactId> 
+				<version>3.1</version> <scope>runtime</scope> </dependency> -->
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib-nodep</artifactId>
+				<version>2.1_3</version>
+				<scope>runtime</scope>
+			</dependency>
+			
+			<!-- jstl is a transient dependency for struts-core -->
+		    <dependency> 
+		      <groupId>jstl</groupId> 
+		          <artifactId>jstl</artifactId> 
+				<version>1.2</version> 
+				<scope>runtime</scope> 
+			</dependency>  
+			<dependency>
+				<groupId>org.apache.struts</groupId>
+				<artifactId>struts-core</artifactId>
+				<version>1.3.10</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.struts</groupId>
+				<artifactId>struts-el</artifactId>
+				<version>1.3.10</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.struts</groupId>
+				<artifactId>struts-taglib</artifactId>
+				<version>1.3.10</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.struts</groupId>
+				<artifactId>struts-tiles</artifactId>
+				<version>1.3.10</version>
+			</dependency>
+
+			<!-- CVE-2014-0114: Apache Commons BeanUtils, as distributed in lib/commons-beanutils-1.8.0.jar 
+				in Apache Struts 1.x through 1.3.10 and in other products requiring commons-beanutils 
+				through 1.9.2, does not suppress the class property, which allows remote 
+				attackers to "manipulate" the ClassLoader and execute arbitrary code via 
+				the class parameter, as demonstrated by the passing of this parameter to 
+				the getClass method of the ActionForm object in Struts 1. -->
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.9.2</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>ojdbc</groupId>
+				<artifactId>ojdbc14</artifactId>
+				<version>10.2.0.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc14</artifactId>
+				<version>10.2.0.5.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>weblogic</groupId>
+				<artifactId>wlfullclient</artifactId>
+				<version>10.3.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>weblogic.1035</groupId>
+				<artifactId>wlfullclient</artifactId>
+				<version>10.3.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>weblogic.1035</groupId>
+				<artifactId>weblogic</artifactId>
+				<version>10.3.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- <dependency> <groupId>weblogic.1035</groupId> <artifactId>webserviceclient-ssl</artifactId> 
+				<version>10.3.5</version> <scope>provided</scope> </dependency> <dependency> 
+				<groupId>weblogic.1035</groupId> <artifactId>webserviceclient</artifactId> 
+				<version>10.3.5</version> <scope>provided</scope> </dependency> <dependency> 
+				<groupId>weblogic.1035</groupId> <artifactId>ws.api</artifactId> <version>1.1.0.0</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>com.bea.core.xml.beaxmlbeans</artifactId> <version>2.3.0.0_2-5-1</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>com.bea.core.stax2</artifactId> <version>1.0.0.0_3-0-1</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>glassfish.jaxb</artifactId> <version>1.0.0.0-2_1-12</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>glassfish.jaxws.resolver</artifactId> <version>1.0.0.0_2-1-5</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>glassfish.jaxws.rt</artifactId> <version>1.2.0.0_2-1-5</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>glassfish.jaxws.tools</artifactId> <version>1.1.0.0_2-1-5</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>glassfish.xmlstreambuffer</artifactId> <version>1.0.0.0_0-5-257</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>glassfish.stax.ex</artifactId> <version>1.0.0.0_1-2</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>com.bea.core.woodstox</artifactId> <version>1.0.0.0_4-0-5</version> 
+				<scope>provided</scope> </dependency> <dependency> <groupId>weblogic.1035</groupId> 
+				<artifactId>cryptoj</artifactId> <version>10.3.5</version> <scope>provided</scope> 
+				</dependency> -->
+		</dependencies>
+
+	</dependencyManagement>
+
+
+
+
+	<build>
+
+		<defaultGoal>versions:update-child-modules clean install</defaultGoal>
+
+		<pluginManagement>
+			<plugins>
+
+
+				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-pmd-plugin</artifactId> 
+					</plugin> -->
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+
+					<version>${telus.maven-site-plugin.version}</version>
+					<!-- <version>3.3</version> -->
+					<!-- careful with upgrades, asciidoctor does not work with 3.4 yet -->
+
+					<configuration>
+						<stagingDirectory>${stagingDirectory}</stagingDirectory>
+					</configuration>
+
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+
+					</executions>
+					<configuration>
+						<skip>${source.skip}</skip>
+						<attach>${source.attach}</attach>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+
+				<configuration>
+					<verbose>true</verbose>
+					<failOnError>false</failOnError>
+					<filesets>
+						<fileset>
+							<directory>${maven-source-plugin.outputDirectory}</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/META-INF</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/src/main/generated-sources</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/src/main/resources/META-INF</directory>
+							<includes>
+								<include>LICENSE.txt</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/src/com</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+
+						<fileset>
+							<directory>${basedir}/staging</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.asciidoctor</groupId>
+						<artifactId>asciidoctor-maven-plugin</artifactId>
+						<version>1.5.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-webdav-jackrabbit</artifactId>
+						<version>2.6</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+
+
+	</build>
+
+
+	<reporting>
+		<plugins>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jxr-plugin</artifactId> 
+				<version>2.3</version> <configuration> <aggregate>false</aggregate> <windowTitle>Telus 
+				Frameworks</windowTitle> <outputDirectory>${basedir}/target/site</outputDirectory> 
+				<top> <a href="http://go/fast/"> <img src="https://community.collaborate.tsl.telus.com/sites/EntArch/sage/Logos/PoweredByFrameworks_Logo_Small_GreenAndPurple.png"> 
+				</img> </a> </top> </configuration> </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>index</report>
+							<report>cim</report>
+							<report>dependencies</report>
+							<!-- <report>dependency-convergence</report> -->
+							<report>dependency-info</report>
+							<report>dependency-management</report>
+							<report>distribution-management</report>
+							<!-- <report>index</report> -->
+							<!-- <report>issue-tracking</report> -->
+							<report>license</report>
+							<!-- <report>mailing-list</report> -->
+							<!-- <report>modules</report> -->
+							<!-- <report>plugin-management</report> -->
+							<report>plugins</report>
+							<report>project-team</report>
+							<report>scm</report>
+							<report>summary</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<!-- <plugin> <artifactId>maven-javadoc-plugin</artifactId> </plugin> 
+				<plugin> <artifactId>maven-source-plugin</artifactId> </plugin> <plugin> 
+				<artifactId>maven-jxr-plugin</artifactId> </plugin> -->
+		</plugins>
+	</reporting>
+
+
+
+	<modules>
+
+	</modules>
+</project>
+
+

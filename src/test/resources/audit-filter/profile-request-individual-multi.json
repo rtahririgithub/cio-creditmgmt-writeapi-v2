@@ -1,0 +1,163 @@
+{
+  "creditProfile": [
+    {
+      "creditProfileDate": "2021-01-15T16:51:22.620Z",
+      "creditRiskRating": "ENC: 11",
+      "creditScore": "ENC: 160",
+      "validFor": {
+        "endDateTime": "2022-01-09T16:51:22.620Z",
+        "startDateTime": "2021-01-09T16:51:22.620Z"
+      },
+      "telusCharacteristic": {
+        "assessmentMessage": "assessmentMessage",
+        "assessmentMessageCode": "assessmentMessageCode",
+        "averageSecurityDepositAmt": "0.5",
+        "bureauDecisionCode": "bureauDecisionCode",
+        "bureauDecisionMessage": "bureauDecisionMessage",
+        "clpCreditLimit": "0.6",
+        "creditAssessmentId": 0,
+        "creditClassCd": "ENC: creditClassCd",
+        "creditClassDate": "2021-01-02T16:51:22.620Z",
+        "creditDecisionCd": "ENC: creditDecisionCd",
+        "creditDecisionDate": "2021-01-09T16:51:22.620Z",
+        "creditProfileLegacyId": 123456,
+        "creditProgramName": "string",
+        "primaryCreditScoreCd": "primaryCreditScoreCd",
+        "primaryCreditScoreTypeCd": "primaryCreditScoreTypeCd",
+        "riskLevelDecisionCd": "ENC: riskLevelDecisionCd",
+        "riskLevelDt": "2021-01-01T16:51:22.620Z",
+        "riskLevelNumber": "riskLevelNumber",
+        "warningHistoryList": [
+          {
+            "approvalDate": "2021-01-09T16:51:22.620Z",
+            "approvalExternalId": 0,
+            "creditAssessmentId": 0,
+            "memoTypeCd": "memoTypeCd",
+            "resolvedPermanentlyInd": "true",
+            "validFor": {
+              "endDateTime": "2022-01-01T16:51:22.620Z",
+              "startDateTime": "2021-01-01T16:51:22.620Z"
+            },
+            "warningCategoryCd": "ENC: warningCategoryCd",
+            "warningCd": "ENC: warningCd",
+            "warningDetectionDate": "2021-01-10T16:51:22.620Z",
+            "warningHistoryLegacyId": 666666,
+            "warningItemTypeCd": "ENC: warningItemTypeCd",
+            "warningStatusCd": "ENC: UNASSIGNED",
+            "warningTypeCd": "ENC: warningTypeCd"
+          }
+        ]
+      }
+    },
+    {
+      "creditProfileDate": "2021-01-15T16:51:22.620Z",
+      "creditRiskRating": "ENC: 11",
+      "creditScore": "ENC: 160",
+      "validFor": {
+        "endDateTime": "2022-01-09T16:51:22.620Z",
+        "startDateTime": "2021-01-09T16:51:22.620Z"
+      },
+      "telusCharacteristic": {
+        "assessmentMessage": "assessmentMessage",
+        "assessmentMessageCode": "assessmentMessageCode",
+        "averageSecurityDepositAmt": "0.5",
+        "bureauDecisionCode": "bureauDecisionCode",
+        "bureauDecisionMessage": "bureauDecisionMessage",
+        "clpCreditLimit": "0.6",
+        "creditAssessmentId": 0,
+        "creditClassCd": "ENC: creditClassCd",
+        "creditClassDate": "2021-01-02T16:51:22.620Z",
+        "creditDecisionCd": "ENC: creditDecisionCd",
+        "creditDecisionDate": "2021-01-09T16:51:22.620Z",
+        "creditProfileLegacyId": 123456,
+        "creditProgramName": "string",
+        "primaryCreditScoreCd": "primaryCreditScoreCd",
+        "primaryCreditScoreTypeCd": "primaryCreditScoreTypeCd",
+        "riskLevelDecisionCd": "ENC: riskLevelDecisionCd",
+        "riskLevelDt": "2021-01-01T16:51:22.620Z",
+        "riskLevelNumber": "riskLevelNumber",
+        "warningHistoryList": [
+          {
+            "approvalDate": "2021-01-09T16:51:22.620Z",
+            "approvalExternalId": 0,
+            "creditAssessmentId": 0,
+            "memoTypeCd": "memoTypeCd",
+            "resolvedPermanentlyInd": "true",
+            "validFor": {
+              "endDateTime": "2022-01-01T16:51:22.620Z",
+              "startDateTime": "2021-01-01T16:51:22.620Z"
+            },
+            "warningCategoryCd": "ENC: warningCategoryCd",
+            "warningCd": "ENC: warningCd",
+            "warningDetectionDate": "2021-01-10T16:51:22.620Z",
+            "warningHistoryLegacyId": 666666,
+            "warningItemTypeCd": "ENC: warningItemTypeCd",
+            "warningStatusCd": "ENC: UNASSIGNED",
+            "warningTypeCd": "ENC: warningTypeCd"
+          }
+        ]
+      }
+    }
+  ],
+  "engagedParty": {
+    "@referredType": "Individual",
+    "birthDate": "2021-01-09",
+    "contactMedium": [
+      {
+        "characteristic": {
+          "city": "city",
+          "contactType": "contactType",
+          "country": "ptcountry",
+          "postCode": "postCode",
+          "stateOrProvince": "ptstateOrProvince",
+          "street1": "street1",
+          "street2": "street2",
+          "street3": "street3",
+          "street4": "street4",
+          "street5": "street5"
+        },
+        "mediumType": "home address",
+        "preferred": "true",
+        "validFor": {
+          "endDateTime": "2023-01-09T16:51:22.620Z",
+          "startDateTime": "2021-01-09T17:51:22.620Z"
+        }
+      }
+    ],
+    "individualIdentification": [
+      {
+        "identificationId": "ENC: identificationId",
+        "identificationType": "drivers license",
+        "issuingAuthority": "issuingAuthority",
+        "issuingDate": "2021-01-09T16:51:22.620Z",
+        "telusCharacteristic": {
+          "countryCd": "idcountryCd",
+          "provinceCd": "idprovinceCd"
+        },
+        "validFor": {
+          "endDateTime": "2021-01-09T16:52:22.620Z",
+          "startDateTime": "2021-01-09T16:51:22.620Z"
+        }
+      },
+      {
+        "identificationId": "ENC: identificationId",
+        "identificationType": "Passport",
+        "issuingAuthority": "issuingAuthority",
+        "issuingDate": "2021-01-09T16:51:22.620Z",
+        "telusCharacteristic": {
+          "countryCd": "idcountryCd",
+          "provinceCd": "idprovinceCd"
+        },
+        "validFor": {
+          "endDateTime": "2021-01-09T16:52:22.620Z",
+          "startDateTime": "2021-01-09T16:51:22.620Z"
+        }
+      }
+    ]
+  },
+  "telusAuditCharacteristic": {
+    "userId": "userlongnguyen",
+    "originatorApplicationId": "10000001",
+    "channelOrganizationId": "channelOrganizationId"
+  }
+}

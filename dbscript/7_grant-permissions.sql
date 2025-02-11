@@ -1,0 +1,44 @@
+-- Grant permissions to users on tables and schema.(DEV)
+GRANT ALL ON SCHEMA CRPROFL TO crproflpv_admin;
+GRANT ALL ON ALL TABLES IN SCHEMA CRPROFL TO crproflpv_admin;
+GRANT ALL ON SCHEMA CRPROFL TO crproflpv_write;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA CRPROFL TO crproflpv_write;
+GRANT USAGE ON SCHEMA CRPROFL TO crproflpv_read;
+GRANT SELECT ON ALL TABLES IN SCHEMA CRPROFL TO crproflpv_read;
+
+
+-- Grant permissions to users on tables and schema. (PT)
+GRANT ALL ON SCHEMA CRPROFL TO crproflpt_admin;
+GRANT ALL ON ALL TABLES IN SCHEMA CRPROFL TO crproflpt_admin;
+GRANT ALL ON SCHEMA CRPROFL TO crproflpt_write;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA CRPROFL TO crproflpt_write;
+GRANT USAGE ON SCHEMA CRPROFL TO crproflpt_read;
+GRANT SELECT ON ALL TABLES IN SCHEMA CRPROFL TO crproflpt_read;
+
+
+-- Grant permissions to users on tables and schema. (PS)
+GRANT ALL ON SCHEMA CRPROFL TO crproflps_admin;
+GRANT ALL ON ALL TABLES IN SCHEMA CRPROFL TO crproflps_admin;
+GRANT ALL ON SCHEMA CRPROFL TO crproflps_write;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA CRPROFL TO crproflps_write;
+GRANT USAGE ON SCHEMA CRPROFL TO crproflps_read;
+GRANT SELECT ON ALL TABLES IN SCHEMA CRPROFL TO crproflps_read;
+
+-- Grant permissions to users on tables and schema. (Staging)
+GRANT ALL ON SCHEMA CRPROFL TO crproflst_admin;
+GRANT ALL ON ALL TABLES IN SCHEMA CRPROFL TO crproflst_admin;
+GRANT ALL ON SCHEMA CRPROFL TO crproflst_write;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA CRPROFL TO crproflst_write;
+GRANT USAGE ON SCHEMA CRPROFL TO crproflst_read;
+GRANT SELECT ON ALL TABLES IN SCHEMA CRPROFL TO crproflst_read;
+
+
+-- Grant permissions to users on tables and schema. (Prod)
+GRANT ALL ON SCHEMA CRPROFL TO crproflpr_admin;
+GRANT ALL ON ALL TABLES IN SCHEMA CRPROFL TO crproflpr_admin;
+GRANT ALL ON SCHEMA CRPROFL TO crproflpr_write;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA CRPROFL TO crproflpr_write;
+GRANT USAGE ON SCHEMA CRPROFL TO crproflpr_read;
+GRANT SELECT ON ALL TABLES IN SCHEMA CRPROFL TO crproflpr_read;
+
+

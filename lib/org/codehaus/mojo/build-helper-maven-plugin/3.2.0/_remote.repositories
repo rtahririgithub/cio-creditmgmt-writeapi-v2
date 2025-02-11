@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jan 21 12:16:35 EST 2021
+build-helper-maven-plugin-3.2.0.jar>telus-build-authorized=
+build-helper-maven-plugin-3.2.0.pom>telus-build-authorized=

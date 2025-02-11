@@ -1,0 +1,29 @@
+{
+  "eventId": "c35de68e-9214-4225-9393-fc44d5315c9d",
+  "eventTimestamp": "2022-05-16T15:53:49.665Z",
+  "eventType": "ACC_CANCEL_PORT_OUT",
+  "transactionDate": "2022-05-16",
+  "notificationSuppressionInd": "false",
+  "auditInfo": {
+    "originatorApplicationId": "ENTRSALESSVC",
+    "kbUserId": "911521",
+    "salesRepCode": null,
+    "dealerCode": null
+  },
+  "account": {
+    "ban": 9000006,
+    "brandId": 1,
+    "accountType": "B",
+    "accountSubType": "R",
+    "status": "N",
+    "segmentCode": "TCSO",
+    "subSegmentCode": "OTHR",
+    "language": "EN",
+    "email": "abced@telus.com",
+    "firstName": null,
+    "lastName": null
+  },
+  "creditCheckResult": null
+}
+
+

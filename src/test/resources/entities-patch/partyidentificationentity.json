@@ -1,0 +1,48 @@
+{
+  "idType": "PSP",
+  "validStartTs": "2021-01-09T16:51:22.620",
+  "validEndTs": "2021-01-09T16:52:22.620",
+  "originatorAppId": "10000001",
+  "channelOrgId": "channelOrganizationId",
+  "createdBy": null,
+  "updatedBy": "userlongnguyen",
+  "version": 1,
+  "characteristics": [
+    {
+      "identificatonId": "144b13b6-b60b-4d08-91bd-90327b68ab02",
+      "key": "countryCd",
+      "value": "idcountryCd",
+      "createdBy": "userlongnguyen",
+      "updatedBy": "userlongnguyen",
+      "originatorAppId": "10000001",
+      "channelOrgId": "channelOrganizationId"
+    },
+    {
+      "key": "issuingAuthority",
+      "value": "",
+      "updatedBy": "userlongnguyen",
+      "originatorAppId": "10000001",
+      "channelOrgId": "channelOrganizationId",
+      "version": 1
+    },
+    {
+      "key": "identificationId",
+      "value": "ENCRYPTED",
+      "updatedBy": "userlongnguyen",
+      "originatorAppId": "10000001",
+      "channelOrgId": "channelOrganizationId",
+      "version": 1
+    }
+  ],
+  "hashedCharacteristics": [
+    {
+      "key": "identificationId",
+      "value": "HASHED",
+      "hashType": "FULL",
+      "updatedBy": "userlongnguyen",
+      "originatorAppId": "10000001",
+      "channelOrgId": "channelOrganizationId",
+      "version": 1
+    }
+  ]
+}

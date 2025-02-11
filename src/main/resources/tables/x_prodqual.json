@@ -1,0 +1,62 @@
+[
+  {
+    "column": "customer_id",
+    "javaType": "Long"
+  },
+  {
+    "column": "credit_profile_id",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },
+  {
+    "column": "PRODUCT_QUAL_ID",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },
+  {
+    "column": "PRODUCT_QUAL_LEGACY_ID",
+    "javaType": "Long"
+  },  
+  {
+    "column": "CREDIT_APPRVD_PROD_CATGY_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "PRODUCT_QUAL_IND",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "create_ts",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+    {
+    "column": "create_user_id",
+    "javaType": "String"
+  },
+  {
+    "column": "last_updt_ts",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+    {
+    "column": "last_updt_user_id",
+    "javaType": "String"
+  }, 
+  {
+    "column": "eff_start_ts",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "eff_stop_ts",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "data_src_id",
+    "javaType": "String"
+  }  
+]

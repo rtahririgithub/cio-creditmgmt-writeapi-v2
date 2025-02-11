@@ -1,0 +1,58 @@
+[
+  {
+    "column": "CPROFL_MAPPING_ID",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },{
+    "column": "CUSTOMER_ID",
+    "javaType": "Long"
+  },
+  {
+    "column": "CPROFL_TO_ID",
+    "comment": "UUID reference of credit_profile table",
+    "javaType": "String"
+  },
+    
+  {
+    "column": "CPROFL_FROM_ID",
+    "comment": "UUID reference of credit_profile table",
+    "javaType": "String"
+  },
+  {
+    "column": "CPROFL_MAPPING_TYP_CD",
+    "javaType": "String"
+  },
+
+  {
+    "column": "CREATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "UPDATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "ORIGINATOR_APP_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "CHANNEL_ORG_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "VERSION",
+    "javaType": "Integer",
+    "insert": false
+  }
+]

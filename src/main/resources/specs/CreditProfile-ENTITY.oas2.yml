@@ -1,0 +1,1711 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Credit Profile ENTITY API",
+        "version": "3.0",
+        "contact": {
+            "name": "Credit and Collection Team"
+        },
+        "description": "Customer Credit Profile(Worthiness) Management\nThe  API provides standardized mechanism for Credit Profile management such as creation, update, retrieval and events publishingfor credit profile changes . \n"
+    },
+    "host": "apigw-private-yul-np-001.cloudapps.telus.com",
+    "basePath": "/customer/creditprofile-mgmt",
+    "schemes": [
+        "https"
+    ],
+    "tags": [
+        {
+            "name": "customer"
+        },
+        {
+            "name": "events subscription"
+        },
+        {
+            "name": "CreditProfile"
+        }
+    ],
+    "paths": {
+        "/creditProfile": {
+            "get": {
+                "operationId": "listCreditProfile",
+                "summary": "List or find creditProfile(s)",
+                "description": "This operation list or find Creditprofile entities.\n* At least one of the primary search criteria must be provided:\n\t* customerId\n\t* If none of these search criteria are provided, error is returned.\n\n* In all queries, there is a limit of max 20 records returned.  \n* If search yields no results, return http 200 with empty list.\n",
+                "tags": [
+                    "CreditProfile"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "customerId",
+                        "type": "string",
+                        "description": "custId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "headers": {
+                            "X-Result-Count": {
+                                "description": "Actual number of items returned in the response body",
+                                "type": "integer"
+                            },
+                            "X-Total-Count": {
+                                "description": "Total number of items matching criteria",
+                                "type": "integer"
+                            }
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CreditProfile"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not allowed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "schema": {
+                            "$ref": "#/definitions/CreditProfile"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not allowed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/CreditProfile"
+                        },
+                        "x-examples": {}
+                    }
+                ],
+                "operationId": "createCreditProfile",
+                "summary": "Create a CreditProfile",
+                "tags": [
+                    "CreditProfile"
+                ],
+                "description": "Create a CreditProfile "
+            }
+        },
+        "/creditProfile/{id}": {
+            "get": {
+                "operationId": "retrieveCreditProfile",
+                "summary": "Retrieves a creditProfile by ID",
+                "description": "This operation retrieves a creditProfile entity. ",
+                "tags": [
+                    "CreditProfile"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "Identifier of the Creditprofile.",
+                        "required": true,
+                        "type": "string",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/CreditProfile"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not allowed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "operationId": "patchCreditProfile",
+                "summary": "Updates a creditProfile",
+                "description": "This operation updates a creditProfile entity.",
+                "tags": [
+                    "CreditProfile"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "Identifier of the Customer",
+                        "required": true,
+                        "type": "string",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated",
+                        "schema": {
+                            "$ref": "#/definitions/CreditProfile"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not allowed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "string",
+                    "required": true
+                }
+            ]
+        },
+        "/creditProfile/unmerge": {
+            "post": {
+                "responses": {
+                    "202": {
+                        "description": "new credir profile created after unmgerge",
+                        "schema": {
+                            "$ref": "#/definitions/CreditProfile"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not allowed",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "request",
+                        "schema": {
+                            "$ref": "#/definitions/UnmergeCreditProfileRequest"
+                        }
+                    }
+                ],
+                "operationId": "unmergeCreditProfile",
+                "summary": "unmerge a credit profile by breaking the primary link to a customer ID",
+                "tags": [
+                    "CreditProfile",
+                    "Unmerge"
+                ],
+                "description": "unmerge credit profile"
+            }
+        }
+    },
+    "definitions": {
+        "Any": {},
+        "CreditProfile": {
+            "type": "object",
+            "description": "A Credit profile for the customer containing risk evaluation's result including credit class, credit risklevel number, ...). ",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for Customers"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Url used to reference the customer."
+                },
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                },
+                "creditProfileLegacyId": {
+                    "type": "number",
+                    "description": "to support legacy assessment service until it is migrated to cloud."
+                },
+                "creationTs": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date  of the creditprofile was originaly created."
+                },
+                "statusCd": {
+                    "type": "string",
+                    "description": "The status of the  the profile"
+                },
+                "statusTs": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date  of the status"
+                },
+                "creditClassCd": {
+                    "type": "string"
+                },
+                "creditClassTs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "creditRiskLevelNum": {
+                    "type": "number"
+                },
+                "creditRiskLevelTs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "creditRiskLevelDecisionCd": {
+                    "type": "string"
+                },
+                "creditDecisionCd": {
+                    "type": "string"
+                },
+                "creditDecisionTs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "creditProgramName": {
+                    "type": "string"
+                },
+                "clpCreditLimitAmt": {
+                    "type": "number"
+                },
+                "clpRatePlanAmt": {
+                    "type": "number"
+                },
+                "clpContractTermNum": {
+                    "type": "number"
+                },
+                "averageSecurityDepositAmt": {
+                    "type": "number"
+                },
+                "warnings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CreditProfileWarning"
+                    }
+                },
+                "primaryCreditScoreCd": {
+                    "type": "string",
+                    "description": "primaryCreditScoreCd "
+                },
+                "primaryCreditScoreTypeCd": {
+                    "type": "string",
+                    "description": "primaryCreditScoreTypeCd "
+                },
+                "bureauDecisionCd": {
+                    "type": "string",
+                    "description": "bureauDecisionCd "
+                },
+                "bureauDecisionCdTxtEn": {
+                    "type": "string",
+                    "description": "bureau Decision code english text"
+                },
+                "bureauDecisionCdTxtFr": {
+                    "type": "string",
+                    "description": "bureau Decision code french text"
+                },
+                "customerCreditProfileRelationCd": {
+                    "type": "string",
+                    "description": "creditProfile relation to the Customer. It can be the customer's primary creditProfile or seconday or etc. the relation is determined by the API and returned in GET response."
+                },
+                "applicationProvinceCd": {
+                    "type": "string"
+                },
+                "creditCheckConsentCd": {
+                    "type": "string"
+                },
+                "lineOfBusiness": {
+                    "type": "string",
+                    "description": "WIRELESS,WIRELINE"
+                },
+                "channel": {
+                    "$ref": "#/definitions/TelusChannel"
+                },
+                "characteristic": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Characteristic"
+                    }
+                },
+                "relatedParty": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelatedParty"
+                    }
+                },
+                "riskLevelRiskAssessment": {
+                    "$ref": "#/definitions/RiskAssessmentRef"
+                },
+                "lastRiskAssessment": {
+                    "$ref": "#/definitions/RiskAssessmentRef"
+                },
+                "attachments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AttachmentRefOrValue"
+                    }
+                },
+                "boltonInd": {
+                    "type": "boolean",
+                    "description": "BoltOn is a marketing term. which indicates whether the customer is eligible for gift offers with purchase."
+                },
+                "productCategoryQualification": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ProductCategoryQualification"
+                    }
+                }
+            },
+            "required": [
+                "validFor"
+            ]
+        },
+        "EntityRef": {
+            "type": "object",
+            "description": "Entity reference schema to be use for all entityRef class.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of a related entity."
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Reference of the related entity."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the related entity."
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                },
+                "@referredType": {
+                    "type": "string",
+                    "description": "The actual type of the target instance when needed for disambiguation."
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "RelatedParty": {
+            "type": "object",
+            "description": "The party - an organization or an individual - that is engaged as a customer.",
+            "required": [
+                "@referredType",
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of a related entity."
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Reference of the related entity."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the related entity."
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role played by the related party"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                },
+                "@referredType": {
+                    "type": "string",
+                    "description": "The actual type of the target instance when needed for disambiguation. Example: Individual or Organization"
+                },
+                "engagedParty": {
+                    "$ref": "#/definitions/RelatedParty",
+                    "description": "The party - an organization or an individual - that is engaged as a customer."
+                }
+            }
+        },
+        "TimePeriod": {
+            "type": "object",
+            "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+            "properties": {
+                "endDateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "End of the time period, using IETC-RFC-3339 format"
+                },
+                "startDateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+                }
+            }
+        },
+        "CreditProfileCreateEvent": {
+            "type": "object",
+            "description": "The notification data structure",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of the resource involved in the event"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Reference of the resource involved in the event"
+                },
+                "eventId": {
+                    "type": "string",
+                    "description": "The identifier of the notification."
+                },
+                "eventTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time of the event occurrence."
+                },
+                "eventType": {
+                    "type": "string",
+                    "description": "The type of the notification."
+                },
+                "correlationId": {
+                    "type": "string",
+                    "description": "The correlation id for this event."
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "The domain of the event."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the event."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An explanatory of the event."
+                },
+                "priority": {
+                    "type": "string",
+                    "description": "A priority."
+                },
+                "timeOcurred": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The time the event occured."
+                },
+                "event": {
+                    "description": "The event payload linked to the involved resource object",
+                    "$ref": "#/definitions/CreditProfileCreateEventPayload"
+                }
+            }
+        },
+        "CreditProfileCreateEventPayload": {
+            "type": "object",
+            "description": "The event data structure",
+            "properties": {
+                "creditProfile": {
+                    "$ref": "#/definitions/CreditProfile"
+                }
+            }
+        },
+        "CreditProfileAttributeValueChangeEvent": {
+            "type": "object",
+            "description": "The notification data structure ",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of the resource involved in the event"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "Reference of the resource involved in the event"
+                },
+                "eventId": {
+                    "type": "string",
+                    "description": "The identifier of the notification."
+                },
+                "eventTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time of the event occurrence."
+                },
+                "eventType": {
+                    "type": "string",
+                    "description": "The type of the notification."
+                },
+                "correlationId": {
+                    "type": "string",
+                    "description": "The correlation id for this event."
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "The domain of the event."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the event."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An explanatory of the event."
+                },
+                "priority": {
+                    "type": "string",
+                    "description": "A priority."
+                },
+                "timeOcurred": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The time the event occured."
+                },
+                "event": {
+                    "description": "The event payload linked to the involved resource object",
+                    "$ref": "#/definitions/CreditProfileAttributeValueChangeEventPayload"
+                }
+            }
+        },
+        "CreditProfileAttributeValueChangeEventPayload": {
+            "type": "object",
+            "description": "The event data structure ",
+            "properties": {
+                "creditProfile": {
+                    "$ref": "#/definitions/CreditProfile"
+                }
+            }
+        },
+        "Error": {
+            "description": "Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)",
+            "type": "object",
+            "required": [
+                "code",
+                "reason"
+            ],
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Application relevant detail, defined in the API or a common list."
+                },
+                "reason": {
+                    "type": "string",
+                    "description": "Explanation of the reason for the error which can be shown to a client user."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "More details and corrective actions related to the error which can be shown to a client user."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "HTTP Error code extension"
+                },
+                "referenceError": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URI of documentation describing the error."
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class."
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name."
+                }
+            }
+        },
+        "CreditProfileWarning": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for warning"
+                },
+                "warningHistoryLegacyId": {
+                    "type": "number",
+                    "description": "The previous Id to support legacy assessment service until it is migrated to cloud "
+                },
+                "warningHistoryLegacyIdNew": {
+                    "type": "number",
+                    "description": "The new Id to support legacy assessment service until it is migrated to cloud "
+                },
+                "warningCategoryCd": {
+                    "type": "string"
+                },
+                "warningCd": {
+                    "type": "string"
+                },
+                "warningDetectionTs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "warningStatusCd": {
+                    "type": "string"
+                },
+                "resolvedPermanentlyInd": {
+                    "type": "boolean"
+                },
+                "approvalTs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "warningTypeCd": {
+                    "type": "string"
+                },
+                "warningItemTypeCd": {
+                    "type": "string"
+                },
+                "approvalCreditAssessmentId": {
+                    "type": "string"
+                },
+                "approvalExternalId": {
+                    "type": "string"
+                },
+                "characteristic": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Characteristic"
+                    }
+                },
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod"
+                }
+            }
+        },
+        "Channel": {
+            "description": "The channel to which the resource reference to. e.g. channel for selling product offerings, channel for opening a trouble ticket etc..",
+            "type": "object",
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "Reference of the channel"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the channel"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the channel"
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Entity"
+                }
+            ]
+        },
+        "TelusChannel": {
+            "description": "TELUS Extension to include additional properties",
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Channel"
+                },
+                {
+                    "properties": {
+                        "originatorAppId": {
+                            "type": "string",
+                            "description": ""
+                        },
+                        "channelOrgId": {
+                            "type": "string",
+                            "description": ""
+                        },
+                        "userId": {
+                            "type": "string",
+                            "description": ""
+                        }
+                    }
+                }
+            ]
+        },
+        "Entity": {
+            "type": "object",
+            "description": "Base entity schema for use in TMForum Open-APIs",
+            "discriminator": "@type",
+            "properties": {
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "Characteristic": {
+            "type": "object",
+            "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+            "required": [
+                "name",
+                "value"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the characteristic"
+                },
+                "valueType": {
+                    "type": "string",
+                    "description": "Data type of the value of the characteristic"
+                },
+                "value": {
+                    "$ref": "#/definitions/Any",
+                    "description": "The value of the characteristic"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "RiskAssessmentRef": {
+            "type": "object",
+            "description": "RiskAssessment reference..",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier "
+                },
+                "href": {
+                    "type": "string",
+                    "description": "hre Reference "
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Detailed description"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name "
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                },
+                "@referredType": {
+                    "type": "string",
+                    "description": "The actual type of the target instance when needed for disambiguation."
+                },
+                "assessmentMessageCd": {
+                    "type": "string",
+                    "description": "assessment Message code "
+                },
+                "assessmentMessageTxtEn": {
+                    "type": "string",
+                    "description": "assessment Message code english text"
+                },
+                "assessmentMessageTxtFr": {
+                    "type": "string",
+                    "description": "assessment Message code french text"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "Quantity": {
+            "type": "object",
+            "description": "An amount in a given unit",
+            "properties": {
+                "amount": {
+                    "default": 1,
+                    "type": "number",
+                    "format": "float",
+                    "description": "Numeric value in a given unit"
+                },
+                "units": {
+                    "type": "string",
+                    "description": "Unit"
+                }
+            }
+        },
+        "MediumCharacteristic": {
+            "type": "object",
+            "description": "Describes the contact medium characteristic that could be used to contact a party (an individual or an organization)",
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "description": "The city"
+                },
+                "contactType": {
+                    "type": "string",
+                    "description": "The type of contact, for example: phone number such as mobile, fixed home, fixed office. postal address such as shipping instalation…"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "The country"
+                },
+                "postCode": {
+                    "type": "string",
+                    "description": "Postcode"
+                },
+                "stateOrProvince": {
+                    "type": "string",
+                    "description": "State or province"
+                },
+                "street1": {
+                    "type": "string",
+                    "description": "Describes the street"
+                },
+                "street2": {
+                    "type": "string",
+                    "description": "Complementary street description"
+                },
+                "street3": {
+                    "type": "string"
+                },
+                "street4": {
+                    "type": "string"
+                },
+                "street5": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "ContactMedium": {
+            "type": "object",
+            "description": "Indicates the contact medium that could be used to contact the party.",
+            "required": [
+                "mediumType",
+                "characteristic"
+            ],
+            "properties": {
+                "mediumType": {
+                    "type": "string",
+                    "description": "Type of the contact medium, such as: email address, telephone number, postal address"
+                },
+                "preferred": {
+                    "type": "boolean",
+                    "description": "If true, indicates that is the preferred contact medium"
+                },
+                "characteristic": {
+                    "$ref": "#/definitions/MediumCharacteristic",
+                    "description": "Any additional characteristic(s) of this contact medium"
+                },
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod",
+                    "description": "The time period that the contact medium is valid for"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "IndividualIdentification": {
+            "type": "object",
+            "description": "Represents our registration of information used as proof of identity by an individual (passport, national identity card, drivers license, social security number, birth certificate)",
+            "properties": {
+                "identificationId": {
+                    "type": "string",
+                    "description": "Identifier"
+                },
+                "identificationType": {
+                    "type": "string",
+                    "description": "Identification type (passport, national identity card, drivers license, social security number, birth certificate)"
+                },
+                "issuingAuthority": {
+                    "type": "string",
+                    "description": "Authority which has issued the identifier, such as: social security, town hall"
+                },
+                "issuingDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date at which the identifier was issued"
+                },
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod",
+                    "description": "The period for which the identification information is valid."
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+                    "format": "uri"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "TelusIndividualIdentification": {
+            "description": "TELUS extension to include additional properties",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/IndividualIdentification"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "telusCharacteristic": {
+                            "type": "object",
+                            "properties": {
+                                "provinceCd": {
+                                    "type": "string"
+                                },
+                                "creditCardFirstSixNum": {
+                                    "type": "string"
+                                },
+                                "creditCardLastFourNum": {
+                                    "type": "string"
+                                },
+                                "countryCd": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "OrganizationIdentification": {
+            "type": "object",
+            "description": "Represents our registration of information used as proof of identity by an organization",
+            "properties": {
+                "identificationId": {
+                    "type": "string",
+                    "description": "Identifier"
+                },
+                "identificationType": {
+                    "type": "string",
+                    "description": "Type of identification information used to identify the company in a country or internationally"
+                },
+                "issuingAuthority": {
+                    "type": "string",
+                    "description": "Authority which has issued the identifier (chamber of commerce...)"
+                },
+                "issuingDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date at which the identifier was issued"
+                },
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod",
+                    "description": "The period for which the identification information is valid."
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+                    "format": "uri"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "Individual": {
+            "type": "object",
+            "description": "Individual represents a single human being (a man, woman or child). The individual can be a customer, an employee or any other person that the organization needs to store information about.",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization"
+                },
+                "birthDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Birth date"
+                },
+                "contactMedium": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContactMedium"
+                    }
+                },
+                "individualIdentification": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TelusIndividualIdentification"
+                    }
+                },
+                "characteristic": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Characteristic"
+                    }
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+                    "format": "uri"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "Organization": {
+            "type": "object",
+            "description": "Organization represents a group of people identified by shared interests or purpose. Examples include business, department and enterprise. Because of the complex nature of many businesses, both organizations and organization units are represented by the same data.",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization"
+                },
+                "contactMedium": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContactMedium"
+                    }
+                },
+                "organizationIdentification": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OrganizationIdentification"
+                    }
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+                    "format": "uri"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "Attachment": {
+            "description": "Complements the description of an element (for instance a product) through video, pictures...",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for this particular attachment"
+                },
+                "href": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URI for this Attachment"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the attachment"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A narrative text describing the content of the attachment"
+                },
+                "attachmentType": {
+                    "type": "string",
+                    "description": "Attachment type such as video, picture"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+                },
+                "mimeType": {
+                    "type": "string",
+                    "description": "Attachment mime type such as extension file for video, picture and document"
+                },
+                "contentSourceCode": {
+                    "type": "string",
+                    "description": "source of attachment content( for instance credit bureua report source( TRANSUNION or EQUIFAX) )"
+                },
+                "content": {
+                    "type": "string",
+                    "format": "base64",
+                    "description": "The actual contents of the attachment object, if embedded, encoded as base64"
+                },
+                "size": {
+                    "$ref": "#/definitions/Quantity",
+                    "description": "The size of the attachment."
+                },
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod",
+                    "description": "The period of time for which the attachment is valid"
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Entity"
+                }
+            ]
+        },
+        "AttachmentRef": {
+            "description": "Attachment reference. An attachment complements the description of an element (for instance a product) through video, pictures",
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A narrative text describing the content of the attachment"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "URL serving as reference for the attachment resource",
+                    "format": "uri"
+                },
+                "id": {
+                    "description": "Unique-Identifier for this attachment",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Link to the attachment media/content",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "@referredType": {
+                    "type": "string",
+                    "description": "The actual type of the target instance when needed for disambiguation."
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/EntityRef"
+                }
+            ]
+        },
+        "AttachmentRefOrValue": {
+            "type": "object",
+            "description": "An attachment by value or by reference. An attachment complements the description of an element, for example through a document, a video, a picture.",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/AttachmentRef",
+                    "description": "ref for entity"
+                },
+                {
+                    "$ref": "#/definitions/Attachment",
+                    "description": "Value for entity"
+                }
+            ]
+        },
+        "Request": {
+            "type": "object",
+            "description": "A response to a request",
+            "required": [
+                "body",
+                "header"
+            ],
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "description": "The body of the request. For example for an HTTP request might contain content of a form ."
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The protocol of the request, e.g. http"
+                },
+                "to": {
+                    "type": "string",
+                    "description": "The target of the request, e.g. a URL for an HTTP request"
+                },
+                "header": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/HeaderItem"
+                    },
+                    "minItems": 1,
+                    "description": "Items included in the header of the request. For example for an HTTP request might contain requested locale, basic authentication."
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "Response": {
+            "type": "object",
+            "description": "A response to a request",
+            "required": [
+                "body",
+                "header"
+            ],
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "description": "The body of the response. For example for an HTTP response might contain HTML for rendering."
+                },
+                "statusCode": {
+                    "type": "string",
+                    "description": "The status of the response. For example for an HTTP response would be codes such as 200, 400, etc."
+                },
+                "header": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/HeaderItem"
+                    },
+                    "minItems": 1,
+                    "description": "Items included in the header of the response. For example for an HTTP response might contain negotiated locale."
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "Monitor": {
+            "type": "object",
+            "description": "Monitoring of resources",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of an instance of the monitor. Required to be unique within the resource type.  Used in URIs as the identifier for specific instances of a type"
+                },
+                "href": {
+                    "type": "string",
+                    "description": "reference to this monitor"
+                },
+                "sourceHref": {
+                    "type": "string",
+                    "description": "The monitored resource href"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The Monitor state of the resource.  InProgress, InError, Completed"
+                },
+                "request": {
+                    "$ref": "#/definitions/Request",
+                    "description": "Represents the request"
+                },
+                "response": {
+                    "$ref": "#/definitions/Response",
+                    "description": "Represents the response"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "HeaderItem": {
+            "type": "object",
+            "description": "An item typically included in a request or response",
+            "required": [
+                "name",
+                "value"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the header item, e.g. locale"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the header item, e.g. en-us"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "ProductCategoryQualification": {
+            "type": "object",
+            "description": "indicataing whether or not customer is qualified for ordering any product in a specific product category",
+            "required": [
+                "categoryCd",
+                "qualified"
+            ],
+            "properties": {
+                "categoryCd": {
+                    "type": "string",
+                    "description": "product category code"
+                },
+                "qualified": {
+                    "type": "boolean",
+                    "description": "whether or not customer is qualified for ordering products in the category"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "UnmergeCreditProfileRequest": {
+            "type": "object",
+            "description": "unmerge credit profile request ",
+            "properties": {
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                },
+                "lineOfBusiness": {
+                    "type": "string",
+                    "description": "WIRELESS,WIRELINE"
+                },
+                "channel": {
+                    "$ref": "#/definitions/TelusChannel"
+                },
+                "relatedParty": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelatedParty"
+                    }
+                }
+            },
+            "required": [
+                "relatedParty",
+                "lineOfBusiness"
+            ]
+        }
+    },
+    "x-cmdbid": 16973,
+    "x-tmfdomain": "customer",
+    "x-api-engagement-num": 688,
+    "x-apiname": "creditprofilemgmt",
+    "x-responsetime": 3000,
+    "x-tps": 300,
+    "securityDefinitions": {
+        "new-auth": {
+            "type": "oauth2",
+            "flow": "application",
+            "tokenUrl": "https://apigw-st.tsl.telus.com/st/token",
+            "scopes": {
+                "all": "952"
+            }
+        }
+    }
+}

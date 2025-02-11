@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>telus.frameworks.enterprise</groupId>
+		<artifactId>frameworks</artifactId>
+		<version>7.3.0</version>
+		<relativePath>../../</relativePath>
+	</parent>
+
+	<packaging>jar</packaging>
+
+	<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+
+	<artifactId>frameworks-crypto</artifactId>
+	<name>${project.artifactId} ${project.version}</name>
+	<description>The Frameworks CRYPTO JAR contains components that use for encryption.  </description>
+	<organization>
+		<name>TELUS Frameworks</name>
+		<url>http://go/fast</url>
+	</organization>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
+			<artifactId>frameworks-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>safenet</groupId>
+			<artifactId>LunaJCASP</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>safenet</groupId>
+			<artifactId>LunaJCESP</artifactId>
+		</dependency>
+
+
+	</dependencies>
+
+
+
+	<build>
+
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+<!--
+					<execution>
+						<id>copy-java1</id>
+
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/java</outputDirectory>
+							<resources>
+
+								<resource>
+									<directory>../fw-complete/src/main/java</directory>
+									<filtering>false</filtering>
+
+									<includes>
+										<include>com/telus/framework/crypto/**/*.java</include>
+									</includes>
+									<excludes>
+										<exclude>com/telus/framework/crypto/EncryptionTool.java</exclude>
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+-->
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>Prev-Frameworks</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-prev-fw</id>
+
+								<phase>validate</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<overwrite>true</overwrite>
+									<outputDirectory>${basedir}/src/main/java</outputDirectory>
+
+									<resources>
+
+										<resource>
+											<directory>../fw-complete-prev/src/main/java</directory>
+											<filtering>false</filtering>
+
+											<includes>
+												<include>com/telus/framework/Test.java</include>
+											</includes>
+
+										</resource>
+
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+
+			</properties>
+		</profile>
+	</profiles>
+</project>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+<!-- <configuration debug="true" scan="true" scanPeriod="30 minutes">  -->
+
+    <springProfile name="non-prod">
+        <property name="LOG_HOME" value="logs"/>
+        <property name="FLAT_LOG_FILE" value="credit-api"/>
+        
+        <conversionRule conversionWord="mask" converterClass="com.telus.credit.advice.LogMaskConverter" />
+
+		<appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:[%magenta(%X{correlationId})][%thread][%cyan(%-40logger{40})][logseveritylevel=%-5level]:%msg%n</Pattern> -->
+				<Pattern>[%d{HH:mm:ss.SSS}]:[%cyan(%-20logger{20})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+		</appender>
+
+		<appender name="FLAT-FILE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_HOME}/${FLAT_LOG_FILE}_${HOSTNAME}.log</file>
+			<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%X{requestId}][%X{debugContext}][%X{containerId}][%thread][%-40logger{40}][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+			<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>${LOG_HOME}/archived/${FLAT_LOG_FILE}_${HOSTNAME}_%d{yyyy-MM-dd}_%i.log
+				</fileNamePattern>
+				<maxFileSize>5MB</maxFileSize>
+				<maxHistory>20</maxHistory>
+				<totalSizeCap>800MB</totalSizeCap>
+			</rollingPolicy>
+		</appender>
+		<!--  Async appenders have risk (heap hog). Use only if proven sync appenders is application responsiveness/throughput -->
+		<appender name="ASYNC-FLAT-FILE-APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+			<appender-ref ref="FLAT-FILE-APPENDER" />
+		</appender>
+
+        <logger name="com.telus.credit" level="debug" additivity="false">
+            <appender-ref ref="CONSOLE-APPENDER"/>
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+        </logger>
+        <logger name="org.springframework" level="info" additivity="false">
+            <appender-ref ref="CONSOLE-APPENDER"/>
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+        </logger>
+
+        <root level="info">
+            <appender-ref ref="CONSOLE-APPENDER"/>
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+        </root>
+    </springProfile>
+
+
+
+
+    <springProfile name="default">
+        <property name="LOG_HOME" value="logs"/>
+        <property name="FLAT_LOG_FILE" value="credit-api"/>
+        
+        <conversionRule conversionWord="mask" converterClass="com.telus.credit.advice.LogMaskConverter" />
+
+		<appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:[%magenta(%X{correlationId})][%thread][%cyan(%-40logger{40})][logseveritylevel=%-5level]:%msg%n</Pattern> -->
+				<Pattern>[%d{HH:mm:ss.SSS}]:[%cyan(%-20logger{20})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+		</appender>
+
+		<appender name="FLAT-FILE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_HOME}/${FLAT_LOG_FILE}_${HOSTNAME}.log</file>
+			<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%X{requestId}][%X{debugContext}][%X{containerId}][%thread][%-40logger{40}][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+			<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>${LOG_HOME}/archived/${FLAT_LOG_FILE}_${HOSTNAME}_%d{yyyy-MM-dd}_%i.log
+				</fileNamePattern>
+				<maxFileSize>5MB</maxFileSize>
+				<maxHistory>20</maxHistory>
+				<totalSizeCap>800MB</totalSizeCap>
+			</rollingPolicy>
+		</appender>
+		<!--  Async appenders have risk (heap hog). Use only if proven sync appenders is application responsiveness/throughput -->
+		<appender name="ASYNC-FLAT-FILE-APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+			<appender-ref ref="FLAT-FILE-APPENDER" />
+		</appender>
+
+        <logger name="com.telus.credit" level="debug" additivity="false">
+            <appender-ref ref="CONSOLE-APPENDER"/>
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+        </logger>
+        <logger name="org.springframework" level="info" additivity="false">
+            <appender-ref ref="CONSOLE-APPENDER"/>
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+        </logger>
+
+        <root level="info">
+            <appender-ref ref="CONSOLE-APPENDER"/>
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+        </root>
+    </springProfile>
+
+
+
+    <springProfile name="cloud-dev">
+        <property name="LOG_HOME" value="/var/log/app-logs"/>
+        <property name="FLAT_LOG_FILE" value="credit-api"/>
+
+       <conversionRule conversionWord="mask" converterClass="com.telus.credit.advice.LogMaskConverter" />
+
+        <appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:[%magenta(%X{correlationId})][%thread][%cyan(%-40logger{40})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern> -->
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%thread][%X{requestId}][%X{debugContext}][%cyan(%-20logger{20})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+		</appender>
+
+
+		<appender name="FLAT-FILE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_HOME}/${FLAT_LOG_FILE}_${HOSTNAME}.log</file>
+			<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%X{requestId}][%X{debugContext}][%X{containerId}][%thread][%-40logger{40}][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+			<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>${LOG_HOME}/archived/${FLAT_LOG_FILE}_${HOSTNAME}_%d{yyyy-MM-dd}_%i.log
+				</fileNamePattern> 				
+				<maxFileSize>10MB</maxFileSize>
+				<maxHistory>50</maxHistory>
+				<totalSizeCap>900MB</totalSizeCap>
+			</rollingPolicy>
+		</appender>
+
+		<!--  Async appenders have risk (heap hog). Use only if proven sync appenders is application responsiveness/throughput -->
+		<appender name="ASYNC-FLAT-FILE-APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+			<appender-ref ref="FLAT-FILE-APPENDER" />
+		</appender>
+ 
+        <logger name="com.telus.credit" level="debug" additivity="false">
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+            <appender-ref ref="CONSOLE-APPENDER"/>
+        </logger>
+        <logger name="org.springframework" level="info" additivity="false">
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+            <appender-ref ref="CONSOLE-APPENDER"/>
+        </logger>
+
+        <root level="error">
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+            <appender-ref ref="CONSOLE-APPENDER"/>
+        </root>
+    </springProfile>
+    
+     <springProfile name="cloud-it04">
+        <property name="LOG_HOME" value="/var/log/app-logs"/>
+        <property name="FLAT_LOG_FILE" value="credit-api"/>
+
+       <conversionRule conversionWord="mask" converterClass="com.telus.credit.advice.LogMaskConverter" />
+
+        <appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:[%magenta(%X{correlationId})][%thread][%cyan(%-40logger{40})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern> -->
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%thread][%X{requestId}][%X{debugContext}][%cyan(%-20logger{20})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+		</appender>
+
+
+		<appender name="FLAT-FILE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_HOME}/${FLAT_LOG_FILE}_${HOSTNAME}.log</file>
+			<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%X{requestId}][%X{debugContext}][%X{containerId}][%thread][%-40logger{40}][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+			<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>${LOG_HOME}/archived/${FLAT_LOG_FILE}_${HOSTNAME}_%d{yyyy-MM-dd}_%i.log
+				</fileNamePattern> 				
+				<maxFileSize>10MB</maxFileSize>
+				<maxHistory>50</maxHistory>
+				<totalSizeCap>900MB</totalSizeCap>
+			</rollingPolicy>
+		</appender>
+
+		<!--  Async appenders have risk (heap hog). Use only if proven sync appenders is application responsiveness/throughput -->
+		<appender name="ASYNC-FLAT-FILE-APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+			<appender-ref ref="FLAT-FILE-APPENDER" />
+		</appender>
+ 
+        <logger name="com.telus.credit" level="debug" additivity="false">
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+            <appender-ref ref="CONSOLE-APPENDER"/>
+        </logger>
+        <logger name="org.springframework" level="info" additivity="false">
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+            <appender-ref ref="CONSOLE-APPENDER"/>
+        </logger>
+
+        <root level="error">
+            <!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+            <appender-ref ref="CONSOLE-APPENDER"/>
+        </root>
+    </springProfile>
+	<springProfile name="cloud-it03">
+		<property name="LOG_HOME" value="/var/log/app-logs"/>
+		<property name="FLAT_LOG_FILE" value="credit-api"/>
+
+		<conversionRule conversionWord="mask" converterClass="com.telus.credit.advice.LogMaskConverter" />
+
+		<appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:[%magenta(%X{correlationId})][%thread][%cyan(%-40logger{40})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern> -->
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%thread][%X{requestId}][%X{debugContext}][%cyan(%-20logger{20})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+		</appender>
+
+
+		<appender name="FLAT-FILE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_HOME}/${FLAT_LOG_FILE}_${HOSTNAME}.log</file>
+			<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%X{requestId}][%X{debugContext}][%X{containerId}][%thread][%-40logger{40}][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+			<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>${LOG_HOME}/archived/${FLAT_LOG_FILE}_${HOSTNAME}_%d{yyyy-MM-dd}_%i.log
+				</fileNamePattern>
+				<maxFileSize>10MB</maxFileSize>
+				<maxHistory>50</maxHistory>
+				<totalSizeCap>900MB</totalSizeCap>
+			</rollingPolicy>
+		</appender>
+
+		<!--  Async appenders have risk (heap hog). Use only if proven sync appenders is application responsiveness/throughput -->
+		<appender name="ASYNC-FLAT-FILE-APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+			<appender-ref ref="FLAT-FILE-APPENDER" />
+		</appender>
+
+		<logger name="com.telus.credit" level="debug" additivity="false">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</logger>
+		<logger name="org.springframework" level="info" additivity="false">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</logger>
+
+		<root level="error">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</root>
+	</springProfile>
+	<springProfile name="cloud-prd">
+		<property name="LOG_HOME" value="/var/log/app-logs"/>
+		<property name="FLAT_LOG_FILE" value="credit-api"/>
+
+		<conversionRule conversionWord="mask" converterClass="com.telus.credit.advice.LogMaskConverter" />
+
+		<appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:[%magenta(%X{correlationId})][%thread][%cyan(%-40logger{40})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern> -->
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%thread][%X{requestId}][%X{debugContext}][%cyan(%-20logger{20})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+		</appender>
+
+
+		<appender name="FLAT-FILE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_HOME}/${FLAT_LOG_FILE}_${HOSTNAME}.log</file>
+			<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%X{requestId}][%X{debugContext}][%X{containerId}][%thread][%-40logger{40}][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+			<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>${LOG_HOME}/archived/${FLAT_LOG_FILE}_${HOSTNAME}_%d{yyyy-MM-dd}_%i.log
+				</fileNamePattern>
+				<maxFileSize>10MB</maxFileSize>
+				<maxHistory>50</maxHistory>
+				<totalSizeCap>900MB</totalSizeCap>
+			</rollingPolicy>
+		</appender>
+
+		<!--  Async appenders have risk (heap hog). Use only if proven sync appenders is application responsiveness/throughput -->
+		<appender name="ASYNC-FLAT-FILE-APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+			<appender-ref ref="FLAT-FILE-APPENDER" />
+		</appender>
+
+		<logger name="com.telus.credit" level="debug" additivity="false">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</logger>
+		<logger name="org.springframework" level="info" additivity="false">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</logger>
+
+		<root level="error">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</root>
+	</springProfile>
+	<springProfile name="cloud-it02">
+		<property name="LOG_HOME" value="/var/log/app-logs"/>
+		<property name="FLAT_LOG_FILE" value="credit-api"/>
+
+		<conversionRule conversionWord="mask" converterClass="com.telus.credit.advice.LogMaskConverter" />
+
+		<appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}:[%magenta(%X{correlationId})][%thread][%cyan(%-40logger{40})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern> -->
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%thread][%X{requestId}][%X{debugContext}][%cyan(%-20logger{20})][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+		</appender>
+
+
+		<appender name="FLAT-FILE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_HOME}/${FLAT_LOG_FILE}_${HOSTNAME}.log</file>
+			<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]:[%X{correlationId}][%X{requestId}][%X{debugContext}][%X{containerId}][%thread][%-40logger{40}][logseveritylevel=%-5level]:%mask(%msg) %n</Pattern>
+			</encoder>
+			<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>${LOG_HOME}/archived/${FLAT_LOG_FILE}_${HOSTNAME}_%d{yyyy-MM-dd}_%i.log
+				</fileNamePattern>
+				<maxFileSize>10MB</maxFileSize>
+				<maxHistory>50</maxHistory>
+				<totalSizeCap>900MB</totalSizeCap>
+			</rollingPolicy>
+		</appender>
+
+		<!--  Async appenders have risk (heap hog). Use only if proven sync appenders is application responsiveness/throughput -->
+		<appender name="ASYNC-FLAT-FILE-APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+			<appender-ref ref="FLAT-FILE-APPENDER" />
+		</appender>
+
+		<logger name="com.telus.credit" level="debug" additivity="false">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</logger>
+		<logger name="org.springframework" level="info" additivity="false">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</logger>
+
+		<root level="error">
+			<!-- <appender-ref ref="FLAT-FILE-APPENDER"/>  -->
+			<appender-ref ref="CONSOLE-APPENDER"/>
+		</root>
+	</springProfile>
+</configuration>

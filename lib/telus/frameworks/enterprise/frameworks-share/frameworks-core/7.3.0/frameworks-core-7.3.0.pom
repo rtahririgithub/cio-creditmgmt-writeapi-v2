@@ -1,0 +1,520 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>telus.frameworks.enterprise</groupId>
+		<artifactId>frameworks</artifactId>
+		<version>7.3.0</version>
+		<relativePath>../../</relativePath>
+	</parent>
+
+	<packaging>jar</packaging>
+
+	<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+
+	<artifactId>frameworks-core</artifactId>
+
+	<name>${project.artifactId} ${project.version}</name>
+
+	<description>The Frameworks CORE JAR contains various framework components (such as logging, configuration, health check) that are required across multiple frameworks. </description>
+	<organization>
+		<name>TELUS Frameworks</name>
+		<url>http://go/fast</url>
+	</organization>
+
+	<properties>
+		<maven.test.skip>true</maven.test.skip>  <!-- skip until junit tests work -->
+	</properties>
+	
+	<dependencies>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- log4j 2 -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<!-- Remove transient dependency <dependency> <groupId>org.springframework</groupId>
+			<artifactId>spring-asm</artifactId> </dependency> -->
+			<!-- 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<!-- Needed by AMDOCS -->
+		<!-- 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+   
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+ 
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>bsf</groupId>
+			<artifactId>bsf</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.castor</groupId>
+			<artifactId>castor-xml</artifactId>
+		</dependency>
+		<!-- Defer the changes <dependency> <groupId>org.codehaus.castor</groupId>
+			<artifactId>castor-core</artifactId> </dependency> -->
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+
+		</dependency>
+
+		<!-- log4j 2 -->
+		<!--dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency-->
+		
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-2.3.5</artifactId>
+		</dependency>
+ 
+		<dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>telus.org.mybatis</groupId>
+            <artifactId>mybatis-spring-patch</artifactId>
+        </dependency>       
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+		 
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+		</dependency>
+		<!--
+		      <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+		
+-->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+		</dependency>
+		<!-- This is included as xerces is built into jre 1.6 -->
+		<!-- <dependency> <groupId>xerces</groupId> <artifactId>xercesImpl</artifactId>
+			<scope>compile</scope> </dependency> -->
+
+		<!-- Needs this jar to fix NoClassDefFoundException for org.w3c.dom.ElementTraversal -->
+		<!-- Download from http://daisycms.org/maven/maven2/deploy/batik/batik-all/1.7/ -->
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>batik-css</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-ext</artifactId>
+        </dependency>
+ 
+		<dependency>
+			<groupId>weblogic</groupId>
+			<artifactId>wlfullclient</artifactId>
+			<version>10.3.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.oracle.coherence</groupId>
+			<artifactId>coherence</artifactId>
+			<optional>true</optional>
+		</dependency>
+<!--  
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<scope>test</scope>
+		</dependency>
+-->		
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+		<dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+      </dependency>
+	</dependencies>
+
+
+
+	<build>
+
+		<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<excludes>
+							<exclude>lib/**/**.*</exclude>
+							<exclude>resources/**/**.*</exclude>
+
+							<exclude>src/main/java/**/**.java</exclude>
+							<exclude>logs/**/**.*</exclude>
+							<exclude>test/**/**.*</exclude>
+							<exclude>**/.copyarea.db</exclude>
+							<exclude>**/**.keep*</exclude>
+							<exclude>xdocs/**/*.*</exclude>
+						</excludes>
+
+
+						<!-- Place the Manifest with build number on the jar -->
+
+						<archive>
+							<manifest>
+								<addExtensions>false</addExtensions>
+								<addClasspath>false</addClasspath>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<index>true</index>
+							
+				            <manifestEntries>
+				              <buildLabel>${label}</buildLabel>
+				              <buildDate>${cctimestamp}</buildDate>
+				            </manifestEntries>							
+						</archive>
+						<classifier>${classifier}</classifier>
+					</configuration>
+				</plugin>
+				
+				<!-- log4j 2 -->
+				<!--plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>1.4.1</version>
+					<executions>
+						<execution>
+							<id>enforce-banned-log4j-2-dependencies</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<bannedDependencies>
+										<excludes>
+											<exclude>log4j:log4j:1.*</exclude>
+										</excludes>
+									</bannedDependencies>
+								</rules>
+								<fail>true</fail>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin-->
+				
+ 		
+<!--
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/resources</outputDirectory>
+
+							<resources>
+
+								<resource>
+									<directory>../fw-complete/src/main/resources/logging</directory>
+									<includes>
+										<include>commons-logging.properties</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>../fw-complete/src/main/resources/config</directory>
+									<includes>
+										<include>PropertyNode.dtd</include>
+									</includes>
+								</resource>
+
+								<resource>
+									<directory>../fw-complete/src/main/resources/audit</directory>
+									<includes>
+										<include>**/*.xml</include>
+									</includes>
+
+								</resource>
+								<resource>
+									<directory>../fw-complete/src/main/resources/security</directory>
+									<includes>
+										<include>**/*.xml</include>
+									</includes>
+								</resource>
+
+								<resource>
+									<directory>../fw-complete/src/main/resources/integration</directory>
+									<includes>
+										<include>**/*.xml</include>
+									</includes>
+
+								</resource>
+								<resource>
+									<directory>../fw-complete/src/main/resources/refresh</directory>
+									<includes>
+										<include>**/**/*.xml</include>
+									</includes>
+								</resource>
+
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-java</id>
+
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/java</outputDirectory>
+							<resources>
+
+								<resource>
+									<directory>../fw-complete/src/main/java</directory>
+									<filtering>false</filtering>
+									<excludes>
+										<exclude>com/telus/framework/xml/util/TransformerUtil.java</exclude>
+									</excludes>
+									<includes>
+
+										<include>com/telus/framework/config/**/*.java</include>
+										<include>com/telus/framework/deferredsync/**/*.java</include>
+										<include>com/telus/framework/util/cache/**/*.java</include>
+										<include>com/telus/framework/logging/**/*.java</include>
+										<include>com/telus/framework/security/*.java</include>
+										<include>com/telus/framework/security/service/SecuritySvc.java</include>
+										<include>com/telus/framework/security/service/impl/PilotSecuritySvcImpl.java</include>
+
+										<include>com/telus/framework/security/authorization/*.java</include>
+										<include>com/telus/framework/security/authorization/jdbc/*.java</include>
+										<include>com/telus/framework/security/authorization/rules/*.java</include>
+										<include>com/telus/framework/security/authorization/web/*.java</include>
+
+
+										<include>com/telus/framework/audit/**/*.java</include>
+										<include>com/telus/framework/monitor/**/*.java</include>
+										<include>com/telus/framework/messaging/JmsTemplate.java</include>
+										<include>com/telus/framework/foundation/*.java</include>
+										<include>com/telus/framework/integration/**/*.java</include>
+										<include>com/telus/framework/math/**/*.java</include>
+
+										<include>com/telus/framework/referencetable/*.java</include>
+										<include>com/telus/framework/transaction/*.java</include>
+										<include>com/telus/framework/util/**/*.java</include>
+
+										<include>com/telus/framework/exception/*.java</include>
+										<include>com/telus/framework/security/authentication/login/*.java</include>
+										<include>com/telus/framework/security/authentication/*.java</include>
+										<include>com/telus/framework/security/authentication/impl/*.java</include>
+
+										<include>com/telus/framework/persistence/**/*.java</include>
+										<include>com/telus/framework/monitor/**/*.java</include>
+										<include>com/telus/framework/xml/**/*.java</include>
+										<include>com/telus/framework/validation/**/*.java</include>
+										<include>com/telus/framework/jmx/**/*.java</include>
+
+										<include>com/telus/framework/content/DocumentManager.java</include>
+										<include>com/telus/framework/content/document/*.java</include>
+										<include>com/telus/framework/content/document/control/*.java</include>
+										<include>com/telus/framework/content/RepositoryNameService.java</include>
+										<include>com/telus/framework/content/placeholder/*.java</include>
+
+									</includes>
+
+								</resource>
+
+							</resources>
+						</configuration>
+					</execution>
+
+				</executions>
+			</plugin>
+-->
+		</plugins>
+	</build>
+
+
+	<profiles>
+	<profile>
+			<id>Eclipse</id>
+			<dependencies>
+				<dependency>
+					<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+					<artifactId>frameworks-app-config</artifactId>
+					<version>${project.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>telus.frameworks.enterprise.frameworks-share</groupId>
+					<artifactId>frameworks-crypto</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>Prev-Frameworks</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-prev-fw</id>
+
+								<phase>validate</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<overwrite>true</overwrite>
+									<outputDirectory>${basedir}/src/main/java</outputDirectory>
+
+									<resources>
+
+										<resource>
+											<directory>../fw-complete-prev/src/main/java</directory>
+											<filtering>false</filtering>
+
+											<includes>
+												<include>com/telus/framework/Test.java</include>
+											</includes>
+
+										</resource>
+
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+
+			</properties>
+		</profile>
+	</profiles>
+
+</project>

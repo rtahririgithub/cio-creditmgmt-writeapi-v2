@@ -1,0 +1,12 @@
+{
+    "partyId": null,
+    "partyType": "Individual",
+    "partyRole": "Customer",
+    "createdBy": "userlongnguyen",
+    "createdTs": null,
+    "updatedBy": "userlongnguyen",
+    "updatedTs": null,
+    "originatorAppId": "10000001",
+    "channelOrgId": "channelOrganizationId",
+    "version": null
+}

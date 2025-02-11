@@ -1,0 +1,73 @@
+{
+  "engagedParty": {
+    "@referredType":"Organization",
+    "contactMedium": [{
+      "id": "944b13b6-b60b-4d08-91bd-90327b68ab02",
+      "characteristic": {
+        "city": "city",
+        "contactType": "contactType",
+        "country": "ptcountry",
+        "postCode": "postCode",
+        "stateOrProvince": "ptstateOrProvince",
+        "street1": "street1",
+        "street2": "street2",
+        "street3": "street3",
+        "street4": "street4",
+        "street5": "street5"
+      },
+      "mediumType": "home address",
+      "preferred" : "true",
+      "validFor": {
+        "endDateTime": "2023-01-09T16:51:22.620Z",
+        "startDateTime": "2021-01-09T17:51:22.620Z"
+      }
+    },
+      {
+        "characteristic": {
+          "city": "city",
+          "contactType": "contactType",
+          "country": "ptcountry",
+          "postCode": "postCode",
+          "stateOrProvince": "ptstateOrProvince",
+          "street1": "street1",
+          "street2": "street2",
+          "street3": "street3",
+          "street4": "street4",
+          "street5": "street5"
+        },
+        "mediumType": "home address",
+        "preferred" : "true",
+        "validFor": {
+          "endDateTime": "2023-01-09T16:51:22.620Z",
+          "startDateTime": "2021-01-09T17:51:22.620Z"
+        }
+      }],
+    "organizationIdentification": [
+      {
+        "identificationId": "identificationId",
+        "identificationType": "QST registration number for Quebec",
+        "issuingAuthority": "issuingAuthority",
+        "issuingDate": "2021-01-09T16:51:22.620Z",
+        "validFor": {
+          "endDateTime": "2021-01-09T16:51:23.620Z",
+          "startDateTime": "2021-01-09T16:51:22.620Z"
+        }
+      },
+      {
+        "identificationId": "identificationId",
+        "identificationType": "Passport",
+        "issuingAuthority": null,
+        "issuingDate": "2021-01-09T16:51:22.620Z",
+        "validFor": {
+          "endDateTime": "2021-01-09T16:52:22.620Z",
+          "startDateTime": "2021-01-09T16:51:22.620Z"
+        }
+      }
+    ]
+  },
+  "telusAuditCharacteristic": {
+    "userId": "userlongnguyen",
+    "originatorApplicationId": "10000001",
+    "channelOrganizationId": "channelOrganizationId"
+  }
+}

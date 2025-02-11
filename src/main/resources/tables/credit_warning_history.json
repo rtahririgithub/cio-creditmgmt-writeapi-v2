@@ -1,0 +1,108 @@
+[
+  {
+    "column": "WARNING_ID",
+    "comment": "UUID auto generated",
+    "javaType": "String",
+    "insert": false
+  },
+  {
+    "column": "WARNING_LEGACY_ID",
+    "javaType": "Long"
+  },
+  {
+    "column": "CREDIT_PROFILE_ID",
+    "comment": "UUID reference of credit_profile table",
+    "javaType": "String"
+  },
+  {
+    "column": "WARNING_STATUS_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "WARNING_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "WARNING_CATEGORY_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "WARNING_TYPE_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "WARNING_ITEM_TYPE_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "EXTERNAL_REFERENCE_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "RESOLVED_FLAG",
+    "javaType": "Boolean"
+  },
+  {
+    "column": "WARNING_DETECTION_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "WARNING_ACCEPTANCE_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "CREDIT_ASSESSMENT_ID",
+    "javaType": "Long"
+  },
+  {
+    "column": "APPROVAL_DT",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "APPROVAL_EXTERNAL_ID",
+    "javaType": "Long"
+  },
+  {
+    "column": "MEMO_TYPE_CD",
+    "javaType": "String"
+  },
+  {
+    "column": "VALID_START_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "VALID_END_TS",
+    "javaType": "java.sql.Timestamp"
+  },
+  {
+    "column": "CREATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "CREATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "UPDATED_BY",
+    "javaType": "String"
+  },
+  {
+    "column": "UPDATED_ON_TS",
+    "javaType": "java.sql.Timestamp",
+    "insert": false
+  },
+  {
+    "column": "ORIGINATOR_APP_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "CHANNEL_ORG_ID",
+    "javaType": "String"
+  },
+  {
+    "column": "VERSION",
+    "javaType": "Integer",
+    "insert": false
+  }
+]
